@@ -1,65 +1,68 @@
-export function renderResults(results){
+export function renderProducts(products){
 
-const container =
+const results =
 document.getElementById(
 'results'
 );
 
-container.innerHTML='';
+results.innerHTML='';
 
-if(results.length===0){
+if(products.length===0){
 
-container.innerHTML=
-'<h3>No se encontraron resultados</h3>';
+results.innerHTML=
+'<h2>No existen coincidencias</h2>';
 
 return;
 }
 
-results.forEach(item=>{
+products.forEach(product=>{
 
-const p =
-item.product;
+results.innerHTML += `
 
-container.innerHTML += `
+<div class="product-card">
 
-<div class="result-card">
-
-<h3>
-${p.name}
-</h3>
+<h2>
+${product.name}
+</h2>
 
 <p>
-${p.description}
+${product.description}
 </p>
 
-<p class="score">
-Compatibilidad:
-${item.score}
-%
+<p>
+
+<strong>Voltaje:</strong>
+${product.voltageClass}
+
 </p>
 
-<div class="tags">
+<p>
 
-<span class="tag">
-${p.voltageClass}
-</span>
+<strong>Conductor:</strong>
+${product.conductor}
 
-<span class="tag">
-${p.conductor}
-</span>
+</p>
 
-<span class="tag">
-${p.insulation}
-</span>
+<p>
 
-</div>
+<strong>Aislamiento:</strong>
+${product.insulation}
 
-<a
-class="brochure"
-target="_blank"
-href="${p.brochure}">
-Ver Folleto
-</a>
+</p>
+
+<p>
+
+<strong>Instalación:</strong>
+${product.installation.join(', ')}
+
+</p>
+
+<p>
+
+<strong>Ambiente:</strong>
+${product.environment.join(', ')}
+
+</p>
 
 </div>
 
