@@ -8,23 +8,63 @@ return products
 
 let score=0;
 
-if(product.application.includes(filters.application))
+if(
+filters.application &&
+product.application.includes(
+filters.application
+)
+){
 score+=40;
+}
 
-if(product.installation.includes(filters.installation))
-score+=30;
+if(
+filters.subApplication &&
+product.subApplication.includes(
+filters.subApplication
+)
+){
+score+=25;
+}
 
-if(product.voltage.includes(filters.voltage))
+if(
+filters.voltage &&
+product.voltageClass ===
+filters.voltage
+){
 score+=20;
+}
+
+if(
+filters.installation &&
+product.installation.includes(
+filters.installation
+)
+){
+score+=15;
+}
+
+if(
+filters.environment &&
+product.environment.includes(
+filters.environment
+)
+){
+score+=10;
+}
 
 filters.features.forEach(feature=>{
 
-if(product.features.includes(feature))
+if(
+product.specialFeatures.includes(
+feature
+)
+){
 score+=10;
+}
 
 });
 
-return{
+return {
 product,
 score
 };
