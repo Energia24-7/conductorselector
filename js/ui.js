@@ -1,7 +1,9 @@
 export function renderProducts(products){
 
     const results =
-        document.getElementById('results');
+        document.getElementById(
+            'results'
+        );
 
     results.innerHTML = '';
 
@@ -14,6 +16,7 @@ export function renderProducts(products){
             '<h2>No existen coincidencias</h2>';
 
         return;
+
     }
 
     products.forEach(product=>{
@@ -22,27 +25,23 @@ export function renderProducts(products){
             Array.isArray(
                 product.installation
             )
-                ? product.installation.join(', ')
-                : '-';
+            ? product.installation.join(', ')
+            : '-';
 
         const environments =
             Array.isArray(
                 product.environment
             )
-                ? product.environment.join(', ')
-                : '-';
+            ? product.environment.join(', ')
+            : '-';
 
         results.innerHTML += `
 
         <div class="product-card">
 
-            <h2>
-                ${product.name || ''}
-            </h2>
+            <h2>${product.name || ''}</h2>
 
-            <p>
-                ${product.description || ''}
-            </p>
+            <p>${product.description || ''}</p>
 
             <p>
                 <strong>Voltaje:</strong>
