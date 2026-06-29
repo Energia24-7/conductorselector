@@ -1,70 +1,81 @@
 export const criteria = {
 
-subApplications:[
+    subApplications:[
 
-"Iluminación",
-"Tableros",
-"Distribución",
-"Circuitos Ramales",
-"Alimentadores",
-"Acometidas",
-"Pozo Profundo",
-"Bomba Sumergible",
-"String Solar",
-"Interconexión Paneles",
-"LAN",
-"Ethernet",
-"Malla Tierra"
+        "Iluminación",
+        "Tableros",
+        "Distribución",
+        "Circuitos Ramales",
+        "Alimentadores",
+        "Acometidas",
+        "Hospitales",
+        "Túneles",
+        "Auditorios",
+        "Equipos Portátiles",
+        "Malla Tierra",
+        "Electrodos",
+        "String Solar",
+        "Interconexión Paneles",
+        "Caja Combinadora",
+        "Inversor",
+        "Transformador",
+        "LAN",
+        "Ethernet",
+        "PoE",
+        "Backbone",
+        "Pozo Profundo",
+        "Bomba Sumergible",
+        "Subestaciones"
 
-],
+    ],
 
-voltages:[
+    voltages:[
 
-"450/750V",
-"600V",
-"1000V",
-"1500VDC",
-"Datos"
+        "450/750V",
+        "600V",
+        "1000V",
+        "1500VDC",
+        "15kV",
+        "Datos",
+        "N/A"
 
-],
+    ],
 
-installations:[
+    installations:[
 
-"Interior",
-"Exterior",
-"Tubería",
-"Canalización",
-"Bandeja",
-"Enterrado",
-"Enterrado Directo",
-"Sumergido"
+        "Interior",
+        "Exterior",
+        "Tubería",
+        "Canalización",
+        "Bandeja",
+        "Enterrado",
+        "Sumergido"
 
-],
+    ],
 
-environments:[
+    environments:[
 
-"Seco",
-"Húmedo",
-"Exterior",
-"UV",
-"Hospital",
-"Túnel",
-"Alta Concentración Personas"
+        "Seco",
+        "Húmedo",
+        "Exterior",
+        "UV",
+        "Hospital",
+        "Alta Concentración Personas"
 
-],
+    ],
 
-features:[
+    features:[
 
-"Flexible",
-"LSZH",
-"Retardante Llama",
-"Resistente Abrasión",
-"Resistente Aceite",
-"Resistente Agua",
-"UV",
-"PoE",
-"Solar"
+        "Flexible",
+        "LSZH",
+        "Retardante Llama",
+        "Resistente Abrasión",
+        "Resistente Aceite",
+        "Resistente Agua",
+        "Solar",
+        "UV",
+        "PoE"
 
-]
+    ]
 
 };
