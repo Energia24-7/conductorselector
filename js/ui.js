@@ -1,73 +1,78 @@
 export function renderProducts(products){
 
-const results =
-document.getElementById(
-'results'
-);
+    const results =
+        document.getElementById('results');
 
-results.innerHTML='';
+    results.innerHTML = '';
 
-if(products.length===0){
+    if(
+        !products ||
+        products.length === 0
+    ){
 
-results.innerHTML=
-'<h2>No existen coincidencias</h2>';
+        results.innerHTML =
+            '<h2>No existen coincidencias</h2>';
 
-return;
-}
+        return;
+    }
 
-products.forEach(product=>{
+    products.forEach(product=>{
 
-results.innerHTML += `
+        const installations =
+            Array.isArray(
+                product.installation
+            )
+                ? product.installation.join(', ')
+                : '-';
 
-<div class="product-card">
+        const environments =
+            Array.isArray(
+                product.environment
+            )
+                ? product.environment.join(', ')
+                : '-';
 
-<h2>
-${product.name}
-</h2>
+        results.innerHTML += `
 
-<p>
-${product.description}
-</p>
+        <div class="product-card">
 
-<p>
+            <h2>
+                ${product.name || ''}
+            </h2>
 
-<strong>Voltaje:</strong>
-${product.voltageClass}
+            <p>
+                ${product.description || ''}
+            </p>
 
-</p>
+            <p>
+                <strong>Voltaje:</strong>
+                ${product.voltageClass || '-'}
+            </p>
 
-<p>
+            <p>
+                <strong>Conductor:</strong>
+                ${product.conductor || '-'}
+            </p>
 
-<strong>Conductor:</strong>
-${product.conductor}
+            <p>
+                <strong>Aislamiento:</strong>
+                ${product.insulation || '-'}
+            </p>
 
-</p>
+            <p>
+                <strong>Instalación:</strong>
+                ${installations}
+            </p>
 
-<p>
+            <p>
+                <strong>Ambiente:</strong>
+                ${environments}
+            </p>
 
-<strong>Aislamiento:</strong>
-${product.insulation}
+        </div>
 
-</p>
+        `;
 
-<p>
-
-<strong>Instalación:</strong>
-${product.installation.join(', ')}
-
-</p>
-
-<p>
-
-<strong>Ambiente:</strong>
-${product.environment.join(', ')}
-
-</p>
-
-</div>
-
-`;
-
-});
+    });
 
 }
