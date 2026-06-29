@@ -10,16 +10,18 @@ from './recommendationEngine.js';
 import { renderResults }
 from './ui.js';
 
-populate();
+populateFilters();
 
 document
-.getElementById('applyFilters')
+.getElementById(
+'applyFilters'
+)
 .addEventListener(
 'click',
 applyFilters
 );
 
-function populate(){
+function populateFilters(){
 
 fillSelect(
 'applicationFilter',
@@ -27,8 +29,8 @@ applications
 );
 
 fillSelect(
-'installationFilter',
-criteria.installations
+'subApplicationFilter',
+criteria.subApplications
 );
 
 fillSelect(
@@ -37,24 +39,60 @@ criteria.voltages
 );
 
 fillSelect(
-'temperatureFilter',
-criteria.temperatures
+'installationFilter',
+criteria.installations
 );
+
+fillSelect(
+'environmentFilter',
+criteria.environments
+);
+
+const featureContainer =
+document.getElementById(
+'featureContainer'
+);
+
+criteria.features.forEach(
+feature=>{
+
+featureContainer.innerHTML += `
+
+<div class="feature-item">
+
+<label>
+
+<input
+type="checkbox"
+class="featureFilter"
+value="${feature}">
+
+${feature}
+
+</label>
+
+</div>
+
+`;
+
+});
 
 }
 
 function fillSelect(id,data){
 
-const select=
+const select =
 document.getElementById(id);
 
-select.innerHTML=
+select.innerHTML =
 '<option value="">Todos</option>';
 
 data.forEach(item=>{
 
-select.innerHTML+=
-`<option>${item}</option>`;
+select.innerHTML +=
+`<option value="${item}">
+${item}
+</option>`;
 
 });
 
@@ -62,13 +100,12 @@ select.innerHTML+=
 
 function applyFilters(){
 
-const features=
+const features =
 [
 ...document.querySelectorAll(
 '.featureFilter:checked'
 )
-]
-.map(x=>x.value);
+].map(x=>x.value);
 
 const filters={
 
@@ -77,9 +114,9 @@ document.getElementById(
 'applicationFilter'
 ).value,
 
-installation:
+subApplication:
 document.getElementById(
-'installationFilter'
+'subApplicationFilter'
 ).value,
 
 voltage:
@@ -87,11 +124,21 @@ document.getElementById(
 'voltageFilter'
 ).value,
 
+installation:
+document.getElementById(
+'installationFilter'
+).value,
+
+environment:
+document.getElementById(
+'environmentFilter'
+).value,
+
 features
 
 };
 
-const results=
+const results =
 filterProducts(filters);
 
 renderResults(results);
