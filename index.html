@@ -25,6 +25,10 @@ href="css/styles.css">
 Selector de Cables Prysmian Ecuador
 </h1>
 
+<p>
+Herramienta de selección técnica
+</p>
+
 </header>
 
 <div class="container">
@@ -33,47 +37,42 @@ Selector de Cables Prysmian Ecuador
 
 <h2>Filtros</h2>
 
-<label>Aplicación</label>
+<label>
+Aplicación
+</label>
+
 <select id="applicationFilter"></select>
 
-<label>Instalación</label>
-<select id="installationFilter"></select>
+<label>
+Subaplicación
+</label>
 
-<label>Voltaje</label>
+<select id="subApplicationFilter"></select>
+
+<label>
+Voltaje
+</label>
+
 <select id="voltageFilter"></select>
 
-<label>Temperatura</label>
-<select id="temperatureFilter"></select>
-
-<h3>Características</h3>
-
 <label>
-<input type="checkbox"
-value="LSZH"
-class="featureFilter">
-LSZH
+Instalación
 </label>
 
-<label>
-<input type="checkbox"
-value="Flexible"
-class="featureFilter">
-Flexible
-</label>
+<select id="installationFilter"></select>
 
 <label>
-<input type="checkbox"
-value="UV"
-class="featureFilter">
-UV
+Ambiente
 </label>
 
-<label>
-<input type="checkbox"
-value="Blindado"
-class="featureFilter">
-Blindado
-</label>
+<select id="environmentFilter"></select>
+
+<h3>
+Características
+</h3>
+
+<div id="featureContainer">
+</div>
 
 <button id="applyFilters">
 Buscar
