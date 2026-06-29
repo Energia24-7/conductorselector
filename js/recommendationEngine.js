@@ -1,7 +1,11 @@
-import { products }
-from '../data/products.js';
+import { products } from '../data/products.js';
 
 export function filterProducts(filters) {
+
+    const features =
+        Array.isArray(filters.features)
+            ? filters.features
+            : [];
 
     return products
         .map(product => {
@@ -9,70 +13,69 @@ export function filterProducts(filters) {
             let score = 0;
 
             const application =
-                product.application || [];
+                Array.isArray(product.application)
+                    ? product.application
+                    : [];
 
             const subApplication =
-                product.subApplication || [];
+                Array.isArray(product.subApplication)
+                    ? product.subApplication
+                    : [];
 
             const installation =
-                product.installation || [];
+                Array.isArray(product.installation)
+                    ? product.installation
+                    : [];
 
             const environment =
-                product.environment || [];
+                Array.isArray(product.environment)
+                    ? product.environment
+                    : [];
 
             const specialFeatures =
-                product.specialFeatures || [];
+                Array.isArray(product.specialFeatures)
+                    ? product.specialFeatures
+                    : [];
 
             if (
                 filters.application &&
-                application.includes(
-                    filters.application
-                )
+                application.includes(filters.application)
             ) {
                 score += 40;
             }
 
             if (
                 filters.subApplication &&
-                subApplication.includes(
-                    filters.subApplication
-                )
+                subApplication.includes(filters.subApplication)
             ) {
                 score += 25;
             }
 
             if (
                 filters.voltage &&
-                product.voltageClass ===
-                filters.voltage
+                product.voltageClass === filters.voltage
             ) {
                 score += 20;
             }
 
             if (
                 filters.installation &&
-                installation.includes(
-                    filters.installation
-                )
+                installation.includes(filters.installation)
             ) {
                 score += 15;
             }
 
             if (
                 filters.environment &&
-                environment.includes(
-                    filters.environment
-                )
+                environment.includes(filters.environment)
             ) {
                 score += 10;
             }
 
-            filters.features.forEach(feature => {
+            features.forEach(feature => {
 
                 if (
-                    specialFeatures.includes(
-                        feature
-                    )
+                    specialFeatures.includes(feature)
                 ) {
                     score += 10;
                 }
@@ -87,5 +90,4 @@ export function filterProducts(filters) {
         })
         .filter(item => item.score > 0)
         .sort((a, b) => b.score - a.score);
-
 }
