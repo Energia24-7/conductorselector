@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+Selector Prysmian Ecuador
+</title>
+
+<link rel="stylesheet"
+href="css/styles.css">
+
+</head>
+
+<body>
+
+<header>
+
+<h1>
+Selector de Cables Prysmian Ecuador
+</h1>
+
+</header>
+
+<div class="container">
+
+<aside class="filters">
+
+<h2>Filtros</h2>
+
+<label>Aplicación</label>
+<select id="applicationFilter"></select>
+
+<label>Instalación</label>
+<select id="installationFilter"></select>
+
+<label>Voltaje</label>
+<select id="voltageFilter"></select>
+
+<label>Temperatura</label>
+<select id="temperatureFilter"></select>
+
+<h3>Características</h3>
+
+<label>
+<input type="checkbox"
+value="LSZH"
+class="featureFilter">
+LSZH
+</label>
+
+<label>
+<input type="checkbox"
+value="Flexible"
+class="featureFilter">
+Flexible
+</label>
+
+<label>
+<input type="checkbox"
+value="UV"
+class="featureFilter">
+UV
+</label>
+
+<label>
+<input type="checkbox"
+value="Blindado"
+class="featureFilter">
+Blindado
+</label>
+
+<button id="applyFilters">
+Buscar
+</button>
+
+</aside>
+
+<main>
+
+<div id="results">
+
+</div>
+
+</main>
+
+</div>
+
+<script type="module"
+src="js/app.js">
+</script>
+
+</body>
+
+</html>
