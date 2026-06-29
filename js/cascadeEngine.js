@@ -110,3 +110,31 @@ return [...values]
 .sort();
 
 }
+export function getFilteredProducts(){
+
+    console.log(
+        "Seleccion actual:",
+        selected
+    );
+
+    return products.filter(product=>{
+
+        console.log(
+            product.name,
+            product.application
+        );
+
+        if(
+            selected.application &&
+            !product.application?.includes(
+                selected.application
+            )
+        ){
+            return false;
+        }
+
+        return true;
+
+    });
+
+}
