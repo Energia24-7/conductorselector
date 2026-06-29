@@ -1,11 +1,7 @@
-*{
-box-sizing:border-box;
-}
-
 body{
 margin:0;
-font-family:Segoe UI,Arial,sans-serif;
-background:#f4f6f8;
+font-family:Segoe UI;
+background:#f3f5f7;
 }
 
 header{
@@ -15,95 +11,52 @@ padding:20px;
 text-align:center;
 }
 
-.container{
+.app-layout{
 display:grid;
-grid-template-columns:320px 1fr;
-height:calc(100vh - 120px);
+grid-template-columns:350px 1fr;
+height:calc(100vh - 110px);
 }
 
-.filters{
+.wizard-panel{
 background:white;
 padding:20px;
 overflow:auto;
-border-right:1px solid #ddd;
 }
 
-.filters h2{
-margin-top:0;
+.card-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
 }
 
-.filters label{
-display:block;
-margin-top:15px;
-font-weight:600;
-}
-
-.filters select{
-width:100%;
-padding:8px;
-margin-top:5px;
-}
-
-.filters button{
-width:100%;
-margin-top:20px;
-padding:12px;
-background:#003b7a;
-color:white;
+.app-card{
+padding:15px;
 border:none;
-cursor:pointer;
-}
-
-.filters button:hover{
 background:#0050a8;
+color:white;
+cursor:pointer;
+border-radius:8px;
 }
 
-.feature-item{
-margin-top:8px;
+.app-card:hover{
+background:#0068db;
 }
 
-main{
+select{
+width:100%;
+padding:10px;
+margin-bottom:15px;
+}
+
+#results{
 padding:20px;
 overflow:auto;
 }
 
-.result-card{
+.product-card{
 background:white;
 padding:20px;
 margin-bottom:15px;
 border-radius:8px;
-box-shadow:0 2px 8px rgba(0,0,0,.08);
-}
-
-.result-card h3{
-margin-top:0;
-color:#003b7a;
-}
-
-.score{
-font-weight:bold;
-color:#00994d;
-}
-
-.tags{
-margin-top:10px;
-}
-
-.tag{
-display:inline-block;
-padding:4px 8px;
-margin:2px;
-background:#e6eef8;
-border-radius:4px;
-font-size:12px;
-}
-
-.brochure{
-display:inline-block;
-margin-top:12px;
-padding:8px 12px;
-background:#003b7a;
-color:white;
-text-decoration:none;
-border-radius:4px;
+box-shadow:0 2px 6px rgba(0,0,0,.1);
 }
