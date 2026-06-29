@@ -1,76 +1,91 @@
 import { products }
 from '../data/products.js';
 
-export function filterProducts(filters){
+export function filterProducts(filters) {
 
-return products
-.map(product=>{
+    return products
+        .map(product => {
 
-let score=0;
+            let score = 0;
 
-if(
-filters.application &&
-product.application.includes(
-filters.application
-)
-){
-score+=40;
-}
+            const application =
+                product.application || [];
 
-if(
-filters.subApplication &&
-product.subApplication.includes(
-filters.subApplication
-)
-){
-score+=25;
-}
+            const subApplication =
+                product.subApplication || [];
 
-if(
-filters.voltage &&
-product.voltageClass ===
-filters.voltage
-){
-score+=20;
-}
+            const installation =
+                product.installation || [];
 
-if(
-filters.installation &&
-product.installation.includes(
-filters.installation
-)
-){
-score+=15;
-}
+            const environment =
+                product.environment || [];
 
-if(
-filters.environment &&
-product.environment.includes(
-filters.environment
-)
-){
-score+=10;
-}
+            const specialFeatures =
+                product.specialFeatures || [];
 
-filters.features.forEach(feature=>{
+            if (
+                filters.application &&
+                application.includes(
+                    filters.application
+                )
+            ) {
+                score += 40;
+            }
 
-if(
-product.specialFeatures.includes(
-feature
-)
-){
-score+=10;
-}
+            if (
+                filters.subApplication &&
+                subApplication.includes(
+                    filters.subApplication
+                )
+            ) {
+                score += 25;
+            }
 
-});
+            if (
+                filters.voltage &&
+                product.voltageClass ===
+                filters.voltage
+            ) {
+                score += 20;
+            }
 
-return {
-product,
-score
-};
+            if (
+                filters.installation &&
+                installation.includes(
+                    filters.installation
+                )
+            ) {
+                score += 15;
+            }
 
-})
-.filter(x=>x.score>0)
-.sort((a,b)=>b.score-a.score);
+            if (
+                filters.environment &&
+                environment.includes(
+                    filters.environment
+                )
+            ) {
+                score += 10;
+            }
+
+            filters.features.forEach(feature => {
+
+                if (
+                    specialFeatures.includes(
+                        feature
+                    )
+                ) {
+                    score += 10;
+                }
+
+            });
+
+            return {
+                product,
+                score
+            };
+
+        })
+        .filter(item => item.score > 0)
+        .sort((a, b) => b.score - a.score);
 
 }
