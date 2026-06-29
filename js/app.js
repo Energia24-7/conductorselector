@@ -1,146 +1,180 @@
 import { applications }
 from '../data/applications.js';
 
-import { criteria }
-from '../data/criteria.js';
+import {
+selected,
+getFilteredProducts,
+getOptions
+}
+from './cascadeEngine.js';
 
-import { filterProducts }
-from './recommendationEngine.js';
-
-import { renderResults }
+import {
+renderProducts
+}
 from './ui.js';
 
-populateFilters();
-
-document
-.getElementById(
-'applyFilters'
-)
-.addEventListener(
-'click',
-applyFilters
-);
-
-function populateFilters(){
-
-fillSelect(
-'applicationFilter',
-applications
-);
-
-fillSelect(
-'subApplicationFilter',
-criteria.subApplications
-);
-
-fillSelect(
-'voltageFilter',
-criteria.voltages
-);
-
-fillSelect(
-'installationFilter',
-criteria.installations
-);
-
-fillSelect(
-'environmentFilter',
-criteria.environments
-);
-
-const featureContainer =
+const appContainer =
 document.getElementById(
-'featureContainer'
+'applications'
 );
 
-criteria.features.forEach(
-feature=>{
+applications.forEach(app=>{
 
-featureContainer.innerHTML += `
+const button =
+document.createElement(
+'button'
+);
 
-<div class="feature-item">
+button.className =
+'app-card';
 
-<label>
+button.textContent =
+app;
 
-<input
-type="checkbox"
-class="featureFilter"
-value="${feature}">
+button.onclick = ()=>{
 
-${feature}
+selected.application =
+app;
 
-</label>
+updateUI();
 
-</div>
+};
 
-`;
+appContainer.appendChild(
+button
+);
 
 });
 
-}
+document
+.getElementById(
+'subApplication'
+)
+.addEventListener(
+'change',
+e=>{
 
-function fillSelect(id,data){
+selected.subApplication =
+e.target.value;
+
+updateUI();
+
+}
+);
+
+document
+.getElementById(
+'voltage'
+)
+.addEventListener(
+'change',
+e=>{
+
+selected.voltage =
+e.target.value;
+
+updateUI();
+
+}
+);
+
+document
+.getElementById(
+'installation'
+)
+.addEventListener(
+'change',
+e=>{
+
+selected.installation =
+e.target.value;
+
+updateUI();
+
+}
+);
+
+document
+.getElementById(
+'environment'
+)
+.addEventListener(
+'change',
+e=>{
+
+selected.environment =
+e.target.value;
+
+updateUI();
+
+}
+);
+
+function populateSelect(
+id,
+options
+){
 
 const select =
-document.getElementById(id);
+document.getElementById(
+id
+);
+
+const current =
+select.value;
 
 select.innerHTML =
 '<option value="">Todos</option>';
 
-data.forEach(item=>{
+options.forEach(v=>{
 
 select.innerHTML +=
-`<option value="${item}">
-${item}
+
+`<option value="${v}">
+${v}
 </option>`;
 
 });
 
+select.value =
+current;
+
 }
 
-function applyFilters(){
+function updateUI(){
 
-const features =
-[
-...document.querySelectorAll(
-'.featureFilter:checked'
+populateSelect(
+'subApplication',
+getOptions(
+'subApplication'
 )
-].map(x=>x.value);
+);
 
-const filters={
+populateSelect(
+'voltage',
+getOptions(
+'voltage'
+)
+);
 
-application:
-document.getElementById(
-'applicationFilter'
-).value,
+populateSelect(
+'installation',
+getOptions(
+'installation'
+)
+);
 
-subApplication:
-document.getElementById(
-'subApplicationFilter'
-).value,
+populateSelect(
+'environment',
+getOptions(
+'environment'
+)
+);
 
-voltage:
-document.getElementById(
-'voltageFilter'
-).value,
-
-installation:
-document.getElementById(
-'installationFilter'
-).value,
-
-environment:
-document.getElementById(
-'environmentFilter'
-).value,
-
-features
-
-};
-
-const results =
-filterProducts(filters);
-
-renderResults(results);
+renderProducts(
+getFilteredProducts()
+);
 
 }
+
+updateUI();
