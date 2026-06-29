@@ -1,7 +1,11 @@
+*{
+box-sizing:border-box;
+}
+
 body{
-font-family:Arial,sans-serif;
 margin:0;
-background:#f3f5f7;
+font-family:Segoe UI,Arial,sans-serif;
+background:#f4f6f8;
 }
 
 header{
@@ -13,8 +17,8 @@ text-align:center;
 
 .container{
 display:grid;
-grid-template-columns:300px 1fr;
-height:calc(100vh - 90px);
+grid-template-columns:320px 1fr;
+height:calc(100vh - 120px);
 }
 
 .filters{
@@ -24,21 +28,38 @@ overflow:auto;
 border-right:1px solid #ddd;
 }
 
+.filters h2{
+margin-top:0;
+}
+
 .filters label{
 display:block;
 margin-top:15px;
+font-weight:600;
 }
 
 .filters select{
 width:100%;
 padding:8px;
+margin-top:5px;
 }
 
 .filters button{
-margin-top:20px;
 width:100%;
-padding:10px;
+margin-top:20px;
+padding:12px;
+background:#003b7a;
+color:white;
+border:none;
 cursor:pointer;
+}
+
+.filters button:hover{
+background:#0050a8;
+}
+
+.feature-item{
+margin-top:8px;
 }
 
 main{
@@ -51,24 +72,38 @@ background:white;
 padding:20px;
 margin-bottom:15px;
 border-radius:8px;
-box-shadow:0 2px 6px rgba(0,0,0,.1);
+box-shadow:0 2px 8px rgba(0,0,0,.08);
 }
 
 .result-card h3{
 margin-top:0;
+color:#003b7a;
 }
 
 .score{
 font-weight:bold;
-color:#0a6;
+color:#00994d;
+}
+
+.tags{
+margin-top:10px;
+}
+
+.tag{
+display:inline-block;
+padding:4px 8px;
+margin:2px;
+background:#e6eef8;
+border-radius:4px;
+font-size:12px;
 }
 
 .brochure{
 display:inline-block;
-margin-top:10px;
+margin-top:12px;
 padding:8px 12px;
 background:#003b7a;
 color:white;
 text-decoration:none;
-border-radius:5px;
+border-radius:4px;
 }
