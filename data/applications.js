@@ -1,17 +1,9 @@
 export const applications = [
-
-    "Construcción",
-
-    "Distribución",
-
-    "Solar",
-
-    "Telecom",
-
-    "Fibra Óptica",
-
-    "Sumergible",
-
-    "Puesta a Tierra"
-
+"Construcción",
+"Distribución",
+"Solar",
+"Telecom",
+"Fibra Óptica",
+"Sumergible",
+"Puesta a Tierra"
 ];
