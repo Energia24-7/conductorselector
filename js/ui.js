@@ -2,413 +2,287 @@ const compareList = [];
 
 export function renderProducts(products){
 
-    const results =
-        document.getElementById(
-            'results'
-        );
+const results =
+document.getElementById(
+'results'
+);
 
-    results.innerHTML = '';
+const counter =
+document.getElementById(
+'resultCounter'
+);
 
-    if(products.length === 0){
+counter.innerHTML =
+`${products.length} producto(s) encontrado(s)`;
 
-        results.innerHTML = `
+results.innerHTML='';
 
-        <div class="empty-results">
+if(products.length===0){
 
-            <h2>
-                No existen coincidencias
-            </h2>
+results.innerHTML=`
+<h2>No existen coincidencias</h2>
+`;
 
-            <p>
-                Modifique los filtros para ampliar
-                la búsqueda.
-            </p>
+return;
+}
 
-        </div>
+products.forEach(product=>{
 
-        `;
+const features =
+(product.specialFeatures||[])
+.map(feature=>`
+<span class="feature-tag">
+${feature}
+</span>
+`)
+.join('');
 
-        return;
-    }
+results.innerHTML += `
 
-    products.forEach(product=>{
+<div class="product-card">
 
-        const features =
-            (product.specialFeatures || [])
-            .map(feature=>`
+<div class="product-header">
 
-                <span class="feature-tag">
-                    ${feature}
-                </span>
+<h3>${product.name}</h3>
 
-            `)
-            .join('');
+<small>
+${(product.application||[]).join(', ')}
+</small>
 
-        results.innerHTML += `
+</div>
 
-        <div class="product-card">
+<div class="product-body">
 
-            <div class="product-header">
+<p>
+${product.description || ''}
+</p>
 
-                <h3>
-                    ${product.name}
-                </h3>
+<div class="product-specs">
 
-                <small>
-                    ${product.application.join(', ')}
-                </small>
+<div class="spec">
+<div class="spec-title">Voltaje</div>
+<div class="spec-value">
+${product.voltageClass || '-'}
+</div>
+</div>
 
-            </div>
+<div class="spec">
+<div class="spec-title">Temperatura</div>
+<div class="spec-value">
+${product.temperatureClass || '-'}
+</div>
+</div>
 
-            <div class="product-body">
+<div class="spec">
+<div class="spec-title">Conductor</div>
+<div class="spec-value">
+${product.conductor || '-'}
+</div>
+</div>
 
-                <p>
-                    ${product.description}
-                </p>
+<div class="spec">
+<div class="spec-title">Aislamiento</div>
+<div class="spec-value">
+${product.insulation || '-'}
+</div>
+</div>
 
-                <p>
-                    <strong>Voltaje:</strong>
-                    ${product.voltageClass}
-                </p>
+</div>
 
-                <p>
-                    <strong>Conductor:</strong>
-                    ${product.conductor}
-                </p>
+<div class="product-features">
 
-                <p>
-                    <strong>Aislamiento:</strong>
-                    ${product.insulation}
-                </p>
+${features}
 
-                <p>
-                    <strong>Temperatura:</strong>
-                    ${product.temperatureClass}
-                </p>
+</div>
 
-                <p>
-                    <strong>Instalación:</strong>
-                    ${(product.installation || []).join(', ')}
-                </p>
+<div class="product-actions">
 
-                <p>
-                    <strong>Ambiente:</strong>
-                    ${(product.environment || []).join(', ')}
-                </p>
+<a
+href="${product.datasheet || '#'}"
+target="_blank"
+class="datasheet-btn">
 
-                <div class="product-features">
+Ficha Técnica
 
-                    ${features}
+</a>
 
-                </div>
+<label
+class="compare-checkbox">
 
-                <div class="product-actions">
+<input
+type="checkbox"
+class="compare-product"
+value="${product.id}">
 
-                    <a
-                    href="${product.datasheet}"
-                    target="_blank"
-                    class="datasheet-btn">
+Comparar
 
-                        Ficha Técnica
+</label>
 
-                    </a>
+</div>
 
-                    <label
-                    class="compare-checkbox">
+</div>
 
-                        <input
-                        type="checkbox"
-                        class="compare-product"
-                        value="${product.id}">
+</div>
 
-                        Comparar
+`;
 
-                    </label>
+});
 
-                </div>
-
-            </div>
-
-        </div>
-
-        `;
-
-    });
-
-    setupCompareEvents(products);
+setupCompareEvents(products);
 
 }
 
 function setupCompareEvents(products){
 
-    const checks =
-        document.querySelectorAll(
-            '.compare-product'
-        );
+document
+.querySelectorAll(
+'.compare-product'
+)
+.forEach(check=>{
 
-    checks.forEach(check=>{
+check.addEventListener(
+'change',
+event=>{
 
-        check.addEventListener(
-            'change',
-            event=>{
+const id =
+event.target.value;
 
-                const id =
-                    event.target.value;
+const product =
+products.find(
+p=>p.id===id
+);
 
-                const product =
-                    products.find(
-                        p=>p.id===id
-                    );
+if(event.target.checked){
 
-                if(
-                    event.target.checked
-                ){
+if(
+!compareList.find(
+p=>p.id===id
+)
+){
+compareList.push(product);
+}
 
-                    if(
-                        !compareList.find(
-                            p=>p.id===id
-                        )
-                    ){
+}else{
 
-                        compareList.push(
-                            product
-                        );
+const index =
+compareList.findIndex(
+p=>p.id===id
+);
 
-                    }
+if(index>-1){
+compareList.splice(index,1);
+}
 
-                }else{
+}
 
-                    const index =
-                        compareList.findIndex(
-                            p=>p.id===id
-                        );
+}
+);
 
-                    if(index>-1){
-
-                        compareList.splice(
-                            index,
-                            1
-                        );
-
-                    }
-
-                }
-
-            }
-        );
-
-    });
+});
 
 }
 
 export function setupCompareButton(){
 
-    const button =
-        document.getElementById(
-            'compareBtn'
-        );
-
-    button.addEventListener(
-        'click',
-        renderComparison
-    );
+document
+.getElementById(
+'compareBtn'
+)
+.addEventListener(
+'click',
+renderComparison
+);
 
 }
 
 function renderComparison(){
 
-    const container =
-        document.getElementById(
-            'comparisonTable'
-        );
+const container =
+document.getElementById(
+'comparisonTable'
+);
 
-    if(compareList.length < 2){
+if(compareList.length<2){
 
-        container.innerHTML = `
+container.innerHTML=
+'Seleccione al menos dos productos';
 
-        <p>
+return;
+}
 
-            Seleccione al menos
-            dos productos.
+let html =
+'<table><thead><tr><th>Característica</th>';
 
-        </p>
+compareList.forEach(product=>{
 
-        `;
+html += `<th>${product.name}</th>`;
 
-        return;
-    }
+});
 
-    let html = `
+html += '</tr></thead><tbody>';
 
-    <table>
+const fields=[
 
-        <thead>
+['Voltaje','voltageClass'],
+['Conductor','conductor'],
+['Aislamiento','insulation'],
+['Temperatura','temperatureClass']
 
-            <tr>
+];
 
-                <th>
-                    Característica
-                </th>
+fields.forEach(field=>{
 
-    `;
+html += `<tr><td>${field[0]}</td>`;
 
-    compareList.forEach(product=>{
+compareList.forEach(product=>{
 
-        html += `
+html += `
+<td>
+${product[field[1]] || '-'}
+</td>
+`;
 
-        <th>
+});
 
-            ${product.name}
+html += '</tr>';
 
-        </th>
+});
 
-        `;
+html += '</tbody></table>';
 
-    });
-
-    html += `
-
-            </tr>
-
-        </thead>
-
-        <tbody>
-
-    `;
-
-    const fields = [
-
-        {
-            label:'Aplicación',
-            key:'application'
-        },
-
-        {
-            label:'Voltaje',
-            key:'voltageClass'
-        },
-
-        {
-            label:'Conductor',
-            key:'conductor'
-        },
-
-        {
-            label:'Aislamiento',
-            key:'insulation'
-        },
-
-        {
-            label:'Temperatura',
-            key:'temperatureClass'
-        },
-
-        {
-            label:'Instalación',
-            key:'installation'
-        },
-
-        {
-            label:'Ambiente',
-            key:'environment'
-        }
-
-    ];
-
-    fields.forEach(field=>{
-
-        html += `
-
-        <tr>
-
-            <td>
-
-                ${field.label}
-
-            </td>
-
-        `;
-
-        compareList.forEach(product=>{
-
-            let value =
-                product[field.key];
-
-            if(
-                Array.isArray(
-                    value
-                )
-            ){
-
-                value =
-                    value.join(', ');
-
-            }
-
-            html += `
-
-            <td>
-
-                ${value || '-'}
-
-            </td>
-
-            `;
-
-        });
-
-        html += `
-
-        </tr>
-
-        `;
-
-    });
-
-    html += `
-
-        </tbody>
-
-    </table>
-
-    `;
-
-    container.innerHTML = html;
+container.innerHTML = html;
 
 }
 
 export function updateSummary(filters){
 
-    const summary =
-        document.getElementById(
-            'selectionText'
-        );
+document.getElementById(
+'selectionText'
+).innerHTML = `
 
-    summary.innerHTML = `
+<strong>Aplicación:</strong>
+${filters.application || 'Todas'}
 
-        <strong>Aplicación:</strong>
-        ${filters.application || 'Todas'}
+<br>
 
-        <br>
+<strong>Uso:</strong>
+${filters.subApplication || 'Todos'}
 
-        <strong>Uso:</strong>
-        ${filters.subApplication || 'Todos'}
+<br>
 
-        <br>
+<strong>Voltaje:</strong>
+${filters.voltage || 'Todos'}
 
-        <strong>Voltaje:</strong>
-        ${filters.voltage || 'Todos'}
+<br>
 
-        <br>
+<strong>Instalación:</strong>
+${filters.installation || 'Todas'}
 
-        <strong>Instalación:</strong>
-        ${filters.installation || 'Todas'}
+<br>
 
-        <br>
+<strong>Ambiente:</strong>
+${filters.environment || 'Todos'}
 
-        <strong>Ambiente:</strong>
-        ${filters.environment || 'Todos'}
-
-    `;
+`;
 
 }
