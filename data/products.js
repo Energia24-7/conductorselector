@@ -503,13 +503,13 @@ export const products = [
 },
 
 /* =====================================================
-   CAMARONERO / BOMBEO
+   CAMARONERO / Sumergible
 ===================================================== */
 
 {
     id:"HIDROFIRM",
     name:"Hidrofirm",
-    application:["Bombeo"],
+    application:["Sumergible"],
     subApplication:[
         "Bomba Sumergible"
     ],
@@ -527,7 +527,7 @@ export const products = [
 {
     id:"OZONEFLEX",
     name:"Ozoneflex Plus",
-    application:["Bombeo"],
+    application:["Sumergible"],
     subApplication:[
         "Bomba Sumergible"
     ],
@@ -548,7 +548,7 @@ export const products = [
 {
     id:"TML",
     name:"TML",
-    application:["Bombeo"],
+    application:["Sumergible"],
     subApplication:[
         "Pozo Profundo",
         "Bomba Sumergible"
@@ -561,7 +561,7 @@ export const products = [
     environment:["Húmedo"],
     specialFeatures:["Resistente Agua"],
     datasheet:"fichas/TML.pdf",
-    description:"Cable para bombas sumergibles."
+    description:"Cable para conexiones sumergibles."
 }
 
 ];
