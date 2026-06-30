@@ -5,89 +5,253 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
+<meta
+name="viewport"
 content="width=device-width, initial-scale=1.0">
 
 <title>
-Selector Prysmian Ecuador
+Selector de Cables Prysmian Ecuador
 </title>
 
-<link rel="stylesheet"
+<link
+rel="stylesheet"
 href="css/styles.css">
 
 </head>
 
 <body>
 
-<header>
+<header class="hero">
 
-<h1>
-Selector Inteligente Prysmian Ecuador
-</h1>
+    <div class="hero-content">
 
-<p>
-Selección técnica de cables
-</p>
+        <h1>
+            Selector Inteligente de Cables Prysmian Ecuador
+        </h1>
+
+        <p>
+            Seleccione la aplicación y filtre progresivamente
+            hasta encontrar el cable recomendado.
+        </p>
+
+    </div>
 
 </header>
 
-<div class="app-layout">
+<div class="layout">
 
-<div class="wizard-panel">
+    <!-- ==========================================
+         PANEL IZQUIERDO
+    =========================================== -->
 
-<h2>
-Paso 1
-</h2>
+    <aside class="sidebar">
 
-<div id="applications"
-class="card-grid">
-</div>
+        <div class="sidebar-header">
 
-<h2>
-Paso 2
-</h2>
+            <h2>
+                Configurador
+            </h2>
 
-<select id="subApplication">
-<option value="">
-Seleccione
-</option>
-</select>
+            <button
+            id="resetFilters"
+            class="reset-btn">
 
-<h2>
-Paso 3
-</h2>
+                Reiniciar
 
-<select id="voltage">
-<option value="">
-Seleccione
-</option>
-</select>
+            </button>
 
-<h2>
-Paso 4
-</h2>
+        </div>
 
-<select id="installation">
-<option value="">
-Seleccione
-</option>
-</select>
+        <!-- PASO 1 -->
 
-<h2>
-Paso 5
-</h2>
+        <section class="filter-block">
 
-<select id="environment">
-<option value="">
-Seleccione
-</option>
-</select>
+            <h3>
+                Paso 1
+            </h3>
 
-</div>
+            <h4>
+                Aplicación
+            </h4>
 
-<div id="results">
+            <div
+            id="applicationButtons"
+            class="button-grid">
+            </div>
 
-</div>
+        </section>
+
+        <!-- PASO 2 -->
+
+        <section class="filter-block">
+
+            <h3>
+                Paso 2
+            </h3>
+
+            <h4>
+                Uso específico
+            </h4>
+
+            <select
+            id="subApplicationFilter">
+            </select>
+
+        </section>
+
+        <!-- PASO 3 -->
+
+        <section class="filter-block">
+
+            <h3>
+                Paso 3
+            </h3>
+
+            <h4>
+                Voltaje
+            </h4>
+
+            <select
+            id="voltageFilter">
+            </select>
+
+        </section>
+
+        <!-- PASO 4 -->
+
+        <section class="filter-block">
+
+            <h3>
+                Paso 4
+            </h3>
+
+            <h4>
+                Instalación
+            </h4>
+
+            <select
+            id="installationFilter">
+            </select>
+
+        </section>
+
+        <!-- PASO 5 -->
+
+        <section class="filter-block">
+
+            <h3>
+                Paso 5
+            </h3>
+
+            <h4>
+                Ambiente
+            </h4>
+
+            <select
+            id="environmentFilter">
+            </select>
+
+        </section>
+
+        <!-- PASO 6 -->
+
+        <section class="filter-block">
+
+            <h3>
+                Paso 6
+            </h3>
+
+            <h4>
+                Características
+            </h4>
+
+            <div
+            id="featureContainer"
+            class="feature-container">
+            </div>
+
+        </section>
+
+    </aside>
+
+    <!-- ==========================================
+         CONTENIDO
+    =========================================== -->
+
+    <main class="content">
+
+        <!-- RESUMEN -->
+
+        <section
+        id="selectionSummary"
+        class="summary-panel">
+
+            <h2>
+                Selección actual
+            </h2>
+
+            <div
+            id="selectionText">
+            </div>
+
+        </section>
+
+        <!-- ACCIONES -->
+
+        <section
+        class="toolbar">
+
+            <button
+            id="compareBtn"
+            class="compare-btn">
+
+                Comparar seleccionados
+
+            </button>
+
+            <a
+            href="https://ec.prysmian.com/es/fichatecnica"
+            target="_blank"
+            class="catalog-btn">
+
+                Fichas Técnicas Prysmian
+
+            </a>
+
+        </section>
+
+        <!-- RESULTADOS -->
+
+        <section>
+
+            <h2>
+                Productos recomendados
+            </h2>
+
+            <div
+            id="results"
+            class="results-grid">
+            </div>
+
+        </section>
+
+        <!-- COMPARADOR -->
+
+        <section
+        id="comparisonPanel"
+        class="comparison-panel">
+
+            <h2>
+                Comparación
+            </h2>
+
+            <div
+            id="comparisonTable">
+            </div>
+
+        </section>
+
+    </main>
 
 </div>
 
