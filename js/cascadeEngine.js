@@ -1,63 +1,70 @@
 import { products }
 from '../data/products.js';
 
-
 export const selected = {
 
-    application: "",
-    subApplication: "",
-    voltage: "",
-    installation: "",
-    environment: ""
+    application:"",
+    subApplication:"",
+    voltage:"",
+    installation:"",
+    environment:""
 
 };
 
 
-/* =====================================
-   FILTRADO PRINCIPAL
-===================================== */
+/* ===================================
+   FILTRO GENERAL
+=================================== */
 
-export function getFilteredProducts() {
+export function getFilteredProducts(){
 
-    return products.filter(product => {
+    return products.filter(product=>{
 
-        if (
+        if(
             selected.application &&
-            !(product.application || [])
-                .includes(selected.application)
-        ) {
+            !(product.application||[])
+            .includes(
+                selected.application
+            )
+        ){
             return false;
         }
 
-        if (
+        if(
             selected.subApplication &&
-            !(product.subApplication || [])
-                .includes(selected.subApplication)
-        ) {
+            !(product.subApplication||[])
+            .includes(
+                selected.subApplication
+            )
+        ){
             return false;
         }
 
-        if (
+        if(
             selected.voltage &&
             product.voltageClass !==
             selected.voltage
-        ) {
+        ){
             return false;
         }
 
-        if (
+        if(
             selected.installation &&
-            !(product.installation || [])
-                .includes(selected.installation)
-        ) {
+            !(product.installation||[])
+            .includes(
+                selected.installation
+            )
+        ){
             return false;
         }
 
-        if (
+        if(
             selected.environment &&
-            !(product.environment || [])
-                .includes(selected.environment)
-        ) {
+            !(product.environment||[])
+            .includes(
+                selected.environment
+            )
+        ){
             return false;
         }
 
@@ -68,87 +75,200 @@ export function getFilteredProducts() {
 }
 
 
-/* =====================================
+/* ===================================
+   FILTROS PROGRESIVOS
+=================================== */
+
+function getProductsForLevel(level){
+
+    return products.filter(product=>{
+
+        if(
+            selected.application &&
+            level !== "application" &&
+            !(product.application||[])
+            .includes(
+                selected.application
+            )
+        ){
+            return false;
+        }
+
+        if(
+            selected.subApplication &&
+            (
+                level==="voltage" ||
+                level==="installation" ||
+                level==="environment"
+            ) &&
+            !(product.subApplication||[])
+            .includes(
+                selected.subApplication
+            )
+        ){
+            return false;
+        }
+
+        if(
+            selected.voltage &&
+            (
+                level==="installation" ||
+                level==="environment"
+            ) &&
+            product.voltageClass !==
+            selected.voltage
+        ){
+            return false;
+        }
+
+        if(
+            selected.installation &&
+            level==="environment" &&
+            !(product.installation||[])
+            .includes(
+                selected.installation
+            )
+        ){
+            return false;
+        }
+
+        return true;
+
+    });
+
+}
+
+
+/* ===================================
    OPCIONES DINÁMICAS
-===================================== */
+=================================== */
 
-export function getOptions(field) {
+export function getOptions(field){
 
-    const filtered =
-        getFilteredProducts();
+    let productsForLevel=[];
+
+    switch(field){
+
+        case "subApplication":
+
+            productsForLevel =
+                getProductsForLevel(
+                    "subApplication"
+                );
+
+            break;
+
+        case "voltage":
+
+            productsForLevel =
+                getProductsForLevel(
+                    "voltage"
+                );
+
+            break;
+
+        case "installation":
+
+            productsForLevel =
+                getProductsForLevel(
+                    "installation"
+                );
+
+            break;
+
+        case "environment":
+
+            productsForLevel =
+                getProductsForLevel(
+                    "environment"
+                );
+
+            break;
+
+        default:
+
+            productsForLevel =
+                products;
+
+    }
 
     const values =
         new Set();
 
-    filtered.forEach(product => {
+    productsForLevel.forEach(product=>{
 
-        switch (field) {
+        if(
+            field==="subApplication"
+        ){
 
-            case "subApplication":
+            (
+                product.subApplication||[]
+            ).forEach(
+                value=>
+                values.add(value)
+            );
 
-                (product.subApplication || [])
-                    .forEach(value =>
-                        values.add(value)
-                    );
+        }
 
-                break;
+        if(
+            field==="voltage"
+        ){
 
-            case "voltage":
+            values.add(
+                product.voltageClass
+            );
 
-                if (
-                    product.voltageClass
-                ) {
+        }
 
-                    values.add(
-                        product.voltageClass
-                    );
+        if(
+            field==="installation"
+        ){
 
-                }
+            (
+                product.installation||[]
+            ).forEach(
+                value=>
+                values.add(value)
+            );
 
-                break;
+        }
 
-            case "installation":
+        if(
+            field==="environment"
+        ){
 
-                (product.installation || [])
-                    .forEach(value =>
-                        values.add(value)
-                    );
-
-                break;
-
-            case "environment":
-
-                (product.environment || [])
-                    .forEach(value =>
-                        values.add(value)
-                    );
-
-                break;
+            (
+                product.environment||[]
+            ).forEach(
+                value=>
+                values.add(value)
+            );
 
         }
 
     });
 
     return [...values]
+        .filter(Boolean)
         .sort();
 
 }
 
 
-/* =====================================
+/* ===================================
    RESET
-===================================== */
+=================================== */
 
-export function resetSelection() {
+export function resetSelection(){
 
-    selected.application = "";
+    selected.application="";
 
-    selected.subApplication = "";
+    selected.subApplication="";
 
-    selected.voltage = "";
+    selected.voltage="";
 
-    selected.installation = "";
+    selected.installation="";
 
-    selected.environment = "";
+    selected.environment="";
 
 }
