@@ -10,7 +10,7 @@ name="viewport"
 content="width=device-width, initial-scale=1.0">
 
 <title>
-Selector de Cables Prysmian Ecuador
+Selector Prysmian Ecuador
 </title>
 
 <link
@@ -30,8 +30,8 @@ href="css/styles.css">
         </h1>
 
         <p>
-            Seleccione la aplicación y filtre progresivamente
-            hasta encontrar el cable recomendado.
+            Encuentre el cable adecuado mediante filtros
+            progresivos de aplicación y condiciones de uso.
         </p>
 
     </div>
@@ -40,9 +40,9 @@ href="css/styles.css">
 
 <div class="layout">
 
-    <!-- ==========================================
-         PANEL IZQUIERDO
-    =========================================== -->
+    <!-- =======================================
+         FILTROS
+    ======================================== -->
 
     <aside class="sidebar">
 
@@ -64,7 +64,7 @@ href="css/styles.css">
 
         <!-- PASO 1 -->
 
-        <section class="filter-block">
+        <div class="filter-block">
 
             <h3>
                 Paso 1
@@ -79,11 +79,11 @@ href="css/styles.css">
             class="button-grid">
             </div>
 
-        </section>
+        </div>
 
         <!-- PASO 2 -->
 
-        <section class="filter-block">
+        <div class="filter-block">
 
             <h3>
                 Paso 2
@@ -97,11 +97,11 @@ href="css/styles.css">
             id="subApplicationFilter">
             </select>
 
-        </section>
+        </div>
 
         <!-- PASO 3 -->
 
-        <section class="filter-block">
+        <div class="filter-block">
 
             <h3>
                 Paso 3
@@ -115,11 +115,11 @@ href="css/styles.css">
             id="voltageFilter">
             </select>
 
-        </section>
+        </div>
 
         <!-- PASO 4 -->
 
-        <section class="filter-block">
+        <div class="filter-block">
 
             <h3>
                 Paso 4
@@ -133,11 +133,11 @@ href="css/styles.css">
             id="installationFilter">
             </select>
 
-        </section>
+        </div>
 
         <!-- PASO 5 -->
 
-        <section class="filter-block">
+        <div class="filter-block">
 
             <h3>
                 Paso 5
@@ -151,55 +151,35 @@ href="css/styles.css">
             id="environmentFilter">
             </select>
 
-        </section>
-
-        <!-- PASO 6 -->
-
-        <section class="filter-block">
-
-            <h3>
-                Paso 6
-            </h3>
-
-            <h4>
-                Características
-            </h4>
-
-            <div
-            id="featureContainer"
-            class="feature-container">
-            </div>
-
-        </section>
+        </div>
 
     </aside>
 
-    <!-- ==========================================
+    <!-- =======================================
          CONTENIDO
-    =========================================== -->
+    ======================================== -->
 
     <main class="content">
 
         <!-- RESUMEN -->
 
-        <section
-        id="selectionSummary"
-        class="summary-panel">
+        <section class="summary-panel">
 
             <h2>
                 Selección actual
             </h2>
 
-            <div
-            id="selectionText">
+            <div id="selectionText">
+
+                Sin filtros seleccionados
+
             </div>
 
         </section>
 
-        <!-- ACCIONES -->
+        <!-- BOTONES -->
 
-        <section
-        class="toolbar">
+        <section class="toolbar">
 
             <button
             id="compareBtn"
@@ -214,7 +194,7 @@ href="css/styles.css">
             target="_blank"
             class="catalog-btn">
 
-                Fichas Técnicas Prysmian
+                Catálogo Prysmian
 
             </a>
 
@@ -238,15 +218,17 @@ href="css/styles.css">
         <!-- COMPARADOR -->
 
         <section
-        id="comparisonPanel"
         class="comparison-panel">
 
             <h2>
-                Comparación
+                Comparación de productos
             </h2>
 
             <div
             id="comparisonTable">
+
+                Seleccione dos o más productos.
+
             </div>
 
         </section>
