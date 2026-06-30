@@ -2,179 +2,343 @@ import { applications }
 from '../data/applications.js';
 
 import {
-selected,
-getFilteredProducts,
-getOptions
+    selected,
+    getFilteredProducts,
+    getOptions
 }
 from './cascadeEngine.js';
 
 import {
-renderProducts
+    renderProducts,
+    setupCompareButton,
+    updateSummary
 }
 from './ui.js';
 
-const appContainer =
-document.getElementById(
-'applications'
+
+document.addEventListener(
+    'DOMContentLoaded',
+    init
 );
 
-applications.forEach(app=>{
 
-const button =
-document.createElement(
-'button'
-);
+function init(){
 
-button.className =
-'app-card';
+    buildApplicationButtons();
 
-button.textContent =
-app;
+    setupCompareButton();
 
-button.onclick = ()=>{
+    setupResetButton();
 
-selected.application =
-app;
+    setupSelectors();
 
-updateUI();
-
-};
-
-appContainer.appendChild(
-button
-);
-
-});
-
-document
-.getElementById(
-'subApplication'
-)
-.addEventListener(
-'change',
-e=>{
-
-selected.subApplication =
-e.target.value;
-
-updateUI();
+    updateUI();
 
 }
-);
 
-document
-.getElementById(
-'voltage'
-)
-.addEventListener(
-'change',
-e=>{
 
-selected.voltage =
-e.target.value;
+/* =====================================
+   APPLICATION BUTTONS
+===================================== */
 
-updateUI();
+function buildApplicationButtons(){
 
-}
-);
+    const container =
+        document.getElementById(
+            'applicationButtons'
+        );
 
-document
-.getElementById(
-'installation'
-)
-.addEventListener(
-'change',
-e=>{
+    container.innerHTML = '';
 
-selected.installation =
-e.target.value;
+    applications.forEach(app=>{
 
-updateUI();
+        const button =
+            document.createElement(
+                'button'
+            );
 
-}
-);
+        button.className =
+            'app-btn';
 
-document
-.getElementById(
-'environment'
-)
-.addEventListener(
-'change',
-e=>{
+        button.textContent =
+            app;
 
-selected.environment =
-e.target.value;
+        button.onclick = ()=>{
 
-updateUI();
+            document
+            .querySelectorAll(
+                '.app-btn'
+            )
+            .forEach(btn=>
+                btn.classList.remove(
+                    'active'
+                )
+            );
 
-}
-);
+            if(
+                selected.application === app
+            ){
 
-function populateSelect(
-id,
-options
-){
+                selected.application = '';
 
-const select =
-document.getElementById(
-id
-);
+                button.classList.remove(
+                    'active'
+                );
 
-const current =
-select.value;
+            }else{
 
-select.innerHTML =
-'<option value="">Todos</option>';
+                selected.application = app;
 
-options.forEach(v=>{
+                button.classList.add(
+                    'active'
+                );
 
-select.innerHTML +=
+            }
 
-`<option value="${v}">
-${v}
-</option>`;
+            selected.subApplication = '';
+            selected.voltage = '';
+            selected.installation = '';
+            selected.environment = '';
 
-});
+            updateUI();
 
-select.value =
-current;
+        };
+
+        container.appendChild(
+            button
+        );
+
+    });
 
 }
+
+
+/* =====================================
+   SELECTORS
+===================================== */
+
+function setupSelectors(){
+
+    document
+    .getElementById(
+        'subApplicationFilter'
+    )
+    .addEventListener(
+        'change',
+        event=>{
+
+            selected.subApplication =
+                event.target.value;
+
+            selected.voltage = '';
+            selected.installation = '';
+            selected.environment = '';
+
+            updateUI();
+
+        }
+    );
+
+    document
+    .getElementById(
+        'voltageFilter'
+    )
+    .addEventListener(
+        'change',
+        event=>{
+
+            selected.voltage =
+                event.target.value;
+
+            selected.installation = '';
+            selected.environment = '';
+
+            updateUI();
+
+        }
+    );
+
+    document
+    .getElementById(
+        'installationFilter'
+    )
+    .addEventListener(
+        'change',
+        event=>{
+
+            selected.installation =
+                event.target.value;
+
+            selected.environment = '';
+
+            updateUI();
+
+        }
+    );
+
+    document
+    .getElementById(
+        'environmentFilter'
+    )
+    .addEventListener(
+        'change',
+        event=>{
+
+            selected.environment =
+                event.target.value;
+
+            updateUI();
+
+        }
+    );
+
+}
+
+
+/* =====================================
+   RESET
+===================================== */
+
+function setupResetButton(){
+
+    document
+    .getElementById(
+        'resetFilters'
+    )
+    .addEventListener(
+        'click',
+        ()=>{
+
+            selected.application = '';
+            selected.subApplication = '';
+            selected.voltage = '';
+            selected.installation = '';
+            selected.environment = '';
+
+            document
+            .querySelectorAll(
+                '.app-btn'
+            )
+            .forEach(btn=>
+                btn.classList.remove(
+                    'active'
+                )
+            );
+
+            updateUI();
+
+        }
+    );
+
+}
+
+
+/* =====================================
+   UI UPDATE
+===================================== */
 
 function updateUI(){
 
-populateSelect(
-'subApplication',
-getOptions(
-'subApplication'
-)
-);
+    populateSelect(
+        'subApplicationFilter',
+        getOptions(
+            'subApplication'
+        ),
+        selected.subApplication
+    );
 
-populateSelect(
-'voltage',
-getOptions(
-'voltage'
-)
-);
+    populateSelect(
+        'voltageFilter',
+        getOptions(
+            'voltage'
+        ),
+        selected.voltage
+    );
 
-populateSelect(
-'installation',
-getOptions(
-'installation'
-)
-);
+    populateSelect(
+        'installationFilter',
+        getOptions(
+            'installation'
+        ),
+        selected.installation
+    );
 
-populateSelect(
-'environment',
-getOptions(
-'environment'
-)
-);
+    populateSelect(
+        'environmentFilter',
+        getOptions(
+            'environment'
+        ),
+        selected.environment
+    );
 
-renderProducts(
-getFilteredProducts()
-);
+    const filtered =
+        getFilteredProducts();
+
+    renderProducts(
+        filtered
+    );
+
+    updateSummary(
+        selected
+    );
 
 }
 
-updateUI();
+
+/* =====================================
+   SELECT POPULATION
+===================================== */
+
+function populateSelect(
+    id,
+    options,
+    currentValue
+){
+
+    const select =
+        document.getElementById(
+            id
+        );
+
+    select.innerHTML = '';
+
+    const first =
+        document.createElement(
+            'option'
+        );
+
+    first.value = '';
+
+    first.textContent =
+        'Todos';
+
+    select.appendChild(
+        first
+    );
+
+    options.forEach(option=>{
+
+        const item =
+            document.createElement(
+                'option'
+            );
+
+        item.value =
+            option;
+
+        item.textContent =
+            option;
+
+        if(
+            option === currentValue
+        ){
+            item.selected = true;
+        }
+
+        select.appendChild(
+            item
+        );
+
+    });
+
+}
