@@ -30,8 +30,8 @@ href="css/styles.css">
         </h1>
 
         <p>
-            Encuentre el cable adecuado mediante filtros
-            progresivos de aplicación y condiciones de uso.
+            Seleccione la aplicación y filtre progresivamente
+            hasta encontrar el cable adecuado.
         </p>
 
     </div>
@@ -39,10 +39,6 @@ href="css/styles.css">
 </header>
 
 <div class="layout">
-
-    <!-- =======================================
-         FILTROS
-    ======================================== -->
 
     <aside class="sidebar">
 
@@ -62,17 +58,11 @@ href="css/styles.css">
 
         </div>
 
-        <!-- PASO 1 -->
-
         <div class="filter-block">
 
-            <h3>
-                Paso 1
-            </h3>
+            <h3>Paso 1</h3>
 
-            <h4>
-                Aplicación
-            </h4>
+            <h4>Aplicación</h4>
 
             <div
             id="applicationButtons"
@@ -81,17 +71,11 @@ href="css/styles.css">
 
         </div>
 
-        <!-- PASO 2 -->
-
         <div class="filter-block">
 
-            <h3>
-                Paso 2
-            </h3>
+            <h3>Paso 2</h3>
 
-            <h4>
-                Uso específico
-            </h4>
+            <h4>Uso específico</h4>
 
             <select
             id="subApplicationFilter">
@@ -99,17 +83,11 @@ href="css/styles.css">
 
         </div>
 
-        <!-- PASO 3 -->
-
         <div class="filter-block">
 
-            <h3>
-                Paso 3
-            </h3>
+            <h3>Paso 3</h3>
 
-            <h4>
-                Voltaje
-            </h4>
+            <h4>Voltaje</h4>
 
             <select
             id="voltageFilter">
@@ -117,17 +95,11 @@ href="css/styles.css">
 
         </div>
 
-        <!-- PASO 4 -->
-
         <div class="filter-block">
 
-            <h3>
-                Paso 4
-            </h3>
+            <h3>Paso 4</h3>
 
-            <h4>
-                Instalación
-            </h4>
+            <h4>Instalación</h4>
 
             <select
             id="installationFilter">
@@ -135,17 +107,11 @@ href="css/styles.css">
 
         </div>
 
-        <!-- PASO 5 -->
-
         <div class="filter-block">
 
-            <h3>
-                Paso 5
-            </h3>
+            <h3>Paso 5</h3>
 
-            <h4>
-                Ambiente
-            </h4>
+            <h4>Ambiente</h4>
 
             <select
             id="environmentFilter">
@@ -155,13 +121,7 @@ href="css/styles.css">
 
     </aside>
 
-    <!-- =======================================
-         CONTENIDO
-    ======================================== -->
-
     <main class="content">
-
-        <!-- RESUMEN -->
 
         <section class="summary-panel">
 
@@ -169,15 +129,14 @@ href="css/styles.css">
                 Selección actual
             </h2>
 
-            <div id="selectionText">
+            <div
+            id="selectionText">
 
                 Sin filtros seleccionados
 
             </div>
 
         </section>
-
-        <!-- BOTONES -->
 
         <section class="toolbar">
 
@@ -194,13 +153,11 @@ href="css/styles.css">
             target="_blank"
             class="catalog-btn">
 
-                Catálogo Prysmian
+                Fichas Técnicas
 
             </a>
 
         </section>
-
-        <!-- RESULTADOS -->
 
         <section>
 
@@ -209,13 +166,16 @@ href="css/styles.css">
             </h2>
 
             <div
+            id="resultCounter"
+            class="result-counter">
+            </div>
+
+            <div
             id="results"
             class="results-grid">
             </div>
 
         </section>
-
-        <!-- COMPARADOR -->
 
         <section
         class="comparison-panel">
