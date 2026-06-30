@@ -1,72 +1,59 @@
-import { products }
-from '../data/products.js';
+import { products } from "../data/products.js";
 
 export const selected = {
 
-    application:"",
-    subApplication:"",
-    voltage:"",
-    installation:"",
-    environment:""
+    application: "",
+    subApplication: "",
+    voltageClass: "",
+    installation: "",
+    environment: "",
+    conductor: "",
+    insulation: ""
 
 };
 
+/* =======================================
+   FILTRO PRINCIPAL
+======================================= */
 
-/* ===================================
-   FILTRO GENERAL
-=================================== */
+export function getFilteredProducts() {
 
-export function getFilteredProducts(){
+    return products.filter(product => {
 
-    return products.filter(product=>{
-
-        if(
+        if (
             selected.application &&
-            !(product.application||[])
-            .includes(
-                selected.application
-            )
-        ){
-            return false;
-        }
+            !(product.application || []).includes(selected.application)
+        ) return false;
 
-        if(
+        if (
             selected.subApplication &&
-            !(product.subApplication||[])
-            .includes(
-                selected.subApplication
-            )
-        ){
-            return false;
-        }
+            !(product.subApplication || []).includes(selected.subApplication)
+        ) return false;
 
-        if(
-            selected.voltage &&
-            product.voltageClass !==
-            selected.voltage
-        ){
-            return false;
-        }
+        if (
+            selected.voltageClass &&
+            product.voltageClass !== selected.voltageClass
+        ) return false;
 
-        if(
+        if (
             selected.installation &&
-            !(product.installation||[])
-            .includes(
-                selected.installation
-            )
-        ){
-            return false;
-        }
+            !(product.installation || []).includes(selected.installation)
+        ) return false;
 
-        if(
+        if (
             selected.environment &&
-            !(product.environment||[])
-            .includes(
-                selected.environment
-            )
-        ){
-            return false;
-        }
+            !(product.environment || []).includes(selected.environment)
+        ) return false;
+
+        if (
+            selected.conductor &&
+            product.conductor !== selected.conductor
+        ) return false;
+
+        if (
+            selected.insulation &&
+            product.insulation !== selected.insulation
+        ) return false;
 
         return true;
 
@@ -74,201 +61,112 @@ export function getFilteredProducts(){
 
 }
 
-
-/* ===================================
-   FILTROS PROGRESIVOS
-=================================== */
-
-function getProductsForLevel(level){
-
-    return products.filter(product=>{
-
-        if(
-            selected.application &&
-            level !== "application" &&
-            !(product.application||[])
-            .includes(
-                selected.application
-            )
-        ){
-            return false;
-        }
-
-        if(
-            selected.subApplication &&
-            (
-                level==="voltage" ||
-                level==="installation" ||
-                level==="environment"
-            ) &&
-            !(product.subApplication||[])
-            .includes(
-                selected.subApplication
-            )
-        ){
-            return false;
-        }
-
-        if(
-            selected.voltage &&
-            (
-                level==="installation" ||
-                level==="environment"
-            ) &&
-            product.voltageClass !==
-            selected.voltage
-        ){
-            return false;
-        }
-
-        if(
-            selected.installation &&
-            level==="environment" &&
-            !(product.installation||[])
-            .includes(
-                selected.installation
-            )
-        ){
-            return false;
-        }
-
-        return true;
-
-    });
-
-}
-
-
-/* ===================================
+/* =======================================
    OPCIONES DINÁMICAS
-=================================== */
+======================================= */
 
-export function getOptions(field){
+export function getOptions(field) {
 
-    let productsForLevel=[];
+    const values = new Set();
 
-    switch(field){
+    getFilteredProducts().forEach(product => {
 
-        case "subApplication":
+        switch(field){
 
-            productsForLevel =
-                getProductsForLevel(
-                    "subApplication"
-                );
+            case "subApplication":
 
-            break;
+                (product.subApplication || [])
+                    .forEach(v=>values.add(v));
 
-        case "voltage":
+                break;
 
-            productsForLevel =
-                getProductsForLevel(
-                    "voltage"
-                );
+            case "voltageClass":
 
-            break;
+                if(product.voltageClass)
+                    values.add(product.voltageClass);
 
-        case "installation":
+                break;
 
-            productsForLevel =
-                getProductsForLevel(
-                    "installation"
-                );
+            case "installation":
 
-            break;
+                (product.installation || [])
+                    .forEach(v=>values.add(v));
 
-        case "environment":
+                break;
 
-            productsForLevel =
-                getProductsForLevel(
-                    "environment"
-                );
+            case "environment":
 
-            break;
+                (product.environment || [])
+                    .forEach(v=>values.add(v));
 
-        default:
+                break;
 
-            productsForLevel =
-                products;
+            case "conductor":
 
-    }
+                if(product.conductor)
+                    values.add(product.conductor);
 
-    const values =
-        new Set();
+                break;
 
-    productsForLevel.forEach(product=>{
+            case "insulation":
 
-        if(
-            field==="subApplication"
-        ){
+                if(product.insulation)
+                    values.add(product.insulation);
 
-            (
-                product.subApplication||[]
-            ).forEach(
-                value=>
-                values.add(value)
-            );
-
-        }
-
-        if(
-            field==="voltage"
-        ){
-
-            values.add(
-                product.voltageClass
-            );
-
-        }
-
-        if(
-            field==="installation"
-        ){
-
-            (
-                product.installation||[]
-            ).forEach(
-                value=>
-                values.add(value)
-            );
-
-        }
-
-        if(
-            field==="environment"
-        ){
-
-            (
-                product.environment||[]
-            ).forEach(
-                value=>
-                values.add(value)
-            );
+                break;
 
         }
 
     });
 
-    return [...values]
-        .filter(Boolean)
-        .sort();
+    return [...values].sort();
 
 }
 
-
-/* ===================================
+/* =======================================
    RESET
-=================================== */
+======================================= */
 
-export function resetSelection(){
+export function resetFilters(){
 
-    selected.application="";
+    selected.application = "";
+    selected.subApplication = "";
+    selected.voltageClass = "";
+    selected.installation = "";
+    selected.environment = "";
+    selected.conductor = "";
+    selected.insulation = "";
 
-    selected.subApplication="";
+}
 
-    selected.voltage="";
+/* =======================================
+   CONTADOR
+======================================= */
 
-    selected.installation="";
+export function getProductCount(){
 
-    selected.environment="";
+    return getFilteredProducts().length;
+
+}
+
+/* =======================================
+   PRODUCTOS RECOMENDADOS
+======================================= */
+
+export function getRecommendedProducts(limit = 4){
+
+    return getFilteredProducts()
+        .sort((a,b)=>{
+
+            const aScore =
+                (a.specialFeatures?.length || 0);
+
+            const bScore =
+                (b.specialFeatures?.length || 0);
+
+            return bScore-aScore;
+
+        })
+        .slice(0,limit);
 
 }
