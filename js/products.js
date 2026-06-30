@@ -1,370 +1,209 @@
 export const products = [
 
 /* =====================================================
-   CONSTRUCCION
+   CONSTRUCCIÓN
 ===================================================== */
 
 {
-    id: "SUPERASTIC",
-
-    name: "Superastic",
-
-    application: ["Construcción"],
-
-    subApplication: [
-        "Iluminación",
-        "Tableros",
-        "Distribución"
-    ],
-
-    voltageClass: "450/750V",
-
-    temperatureClass: "70°C",
-
-    conductor: "Cobre",
-
-    insulation: "PVC",
-
-    installation: [
-        "Interior",
-        "Tubería",
-        "Canalización"
-    ],
-
-    environment: [
-        "Seco"
-    ],
-
-    specialFeatures: [
-        "Flexible"
-    ],
-
-    brochure:
-    "Brochure Construcción",
-
-    description:
-    "Cable flexible clase 5 para iluminación, tableros y distribución."
+id:"SUPERASTIC",
+family:"Construcción",
+catalog:"Construcción",
+name:"Superastic Flex",
+application:["Construcción"],
+subApplication:["Iluminación","Circuitos Ramales","Tableros"],
+voltageClass:"450/750V",
+temperatureClass:"70°C",
+conductor:"Cobre",
+insulation:"PVC",
+installation:["Interior","Tubería","Canalización"],
+environment:["Seco"],
+specialFeatures:["Flexible"],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/4_Ficha%20te%CC%81cnica%20Superastic%C2%AE%20Flex_0.pdf",
+description:"Cable flexible para instalaciones residenciales y comerciales."
 },
 
 {
-    id: "THHN-THWN2",
-
-    name: "THHN / THWN-2",
-
-    application: ["Construcción"],
-
-    subApplication: [
-        "Circuitos Ramales",
-        "Alimentadores",
-        "Acometidas",
-        "Iluminación"
-    ],
-
-    voltageClass: "600V",
-
-    temperatureClass: "90°C",
-
-    conductor: "Cobre",
-
-    insulation: "PVC + Nylon",
-
-    installation: [
-        "Interior",
-        "Exterior",
-        "Tubería",
-        "Canalización",
-        "Bandeja"
-    ],
-
-    environment: [
-        "Seco",
-        "Húmedo"
-    ],
-
-    specialFeatures: [
-        "Retardante Llama",
-        "Resistente Abrasión",
-        "Resistente Aceite",
-        "Resistente Gasolina"
-    ],
-
-    brochure:
-    "Flyer THHN THWN-2",
-
-    description:
-    "Conductor para instalaciones residenciales, comerciales e industriales."
+id:"THHN",
+family:"Construcción",
+catalog:"Construcción",
+name:"THHN",
+application:["Construcción"],
+subApplication:["Circuitos Ramales","Alimentadores","Acometidas"],
+voltageClass:"600V",
+temperatureClass:"90°C",
+conductor:"Cobre",
+insulation:"PVC + Nylon",
+installation:["Interior","Tubería","Canalización"],
+environment:["Seco","Húmedo"],
+specialFeatures:["Retardante Llama"],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/FT-CABLES-THHN-EC.pdf",
+description:"Cable para acometidas y alimentadores."
 },
 
 {
-    id: "THWN-FLEX-2",
-
-    name: "THWN FLEX 2",
-
-    application: ["Construcción"],
-
-    subApplication: [
-        "Circuitos Ramales",
-        "Alimentadores",
-        "Acometidas"
-    ],
-
-    voltageClass: "600V",
-
-    temperatureClass: "90°C",
-
-    conductor: "Cobre",
-
-    insulation: "PVC + Nylon",
-
-    installation: [
-        "Interior",
-        "Exterior",
-        "Tubería",
-        "Canalización",
-        "Bandeja"
-    ],
-
-    environment: [
-        "Seco",
-        "Húmedo"
-    ],
-
-    specialFeatures: [
-        "Flexible",
-        "Retardante Llama",
-        "Resistente Abrasión"
-    ],
-
-    brochure:
-    "Brochure Construcción",
-
-    description:
-    "Versión flexible para instalaciones de fuerza y alumbrado."
+id:"THHNFLEX",
+family:"Construcción",
+catalog:"Construcción",
+name:"THHN Flex",
+application:["Construcción"],
+subApplication:["Circuitos Ramales","Alimentadores"],
+voltageClass:"600V",
+temperatureClass:"90°C",
+conductor:"Cobre Flexible",
+insulation:"PVC + Nylon",
+installation:["Interior","Canalización"],
+environment:["Seco","Húmedo"],
+specialFeatures:["Flexible"],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/FT-CABLES-THHN-EC_0.pdf",
+description:"Versión flexible del THHN."
 },
 
 {
-    id: "SUPERFLEX-MONO",
-
-    name: "Superflex Monoconductor",
-
-    application: [
-        "Construcción",
-        "Distribución"
-    ],
-
-    subApplication: [
-        "Subestaciones",
-        "Alimentadores"
-    ],
-
-    voltageClass: "1000V",
-
-    temperatureClass: "90°C",
-
-    conductor: "Cobre",
-
-    insulation: "PVC",
-
-    installation: [
-        "Enterrado Directo",
-        "Sumergido",
-        "Exterior",
-        "Interior"
-    ],
-
-    environment: [
-        "Húmedo",
-        "Exterior"
-    ],
-
-    specialFeatures: [
-        "Flexible",
-        "Resistente Humedad",
-        "Resistente Impacto"
-    ],
-
-    brochure:
-    "Brochure Construcción",
-
-    description:
-    "Cable altamente flexible para alimentación y distribución."
+id:"THWN2",
+family:"Construcción",
+catalog:"Construcción",
+name:"THWN-2 Flex",
+application:["Construcción"],
+subApplication:["Circuitos Ramales","Alimentadores"],
+voltageClass:"600V",
+temperatureClass:"90°C",
+conductor:"Cobre",
+insulation:"PVC + Nylon",
+installation:["Interior","Exterior","Bandeja"],
+environment:["Seco","Húmedo"],
+specialFeatures:["Flexible"],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/FT-THWN-2.pdf",
+description:"Cable flexible THWN-2."
 },
 
 {
-    id: "SUPERFLEX-MULTI",
-
-    name: "Superflex Multiconductor",
-
-    application: [
-        "Construcción",
-        "Distribución"
-    ],
-
-    subApplication: [
-        "Subestaciones",
-        "Distribución"
-    ],
-
-    voltageClass: "1000V",
-
-    temperatureClass: "90°C",
-
-    conductor: "Cobre",
-
-    insulation: "PVC",
-
-    installation: [
-        "Enterrado Directo",
-        "Sumergido"
-    ],
-
-    environment: [
-        "Exterior",
-        "Húmedo"
-    ],
-
-    specialFeatures: [
-        "Flexible",
-        "Resistente Humedad"
-    ],
-
-    brochure:
-    "Brochure Construcción",
-
-    description:
-    "Cable flexible multiconductor para distribución."
+id:"GPT",
+family:"Construcción",
+catalog:"Construcción",
+name:"GPT",
+application:["Construcción"],
+subApplication:["Automotriz","Tableros"],
+voltageClass:"60V",
+temperatureClass:"80°C",
+conductor:"Cobre",
+insulation:"PVC",
+installation:["Interior"],
+environment:["Seco"],
+specialFeatures:["Flexible"],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/BW-INSTALACION-GPT-%28TAC%29.pdf",
+description:"Cable automotriz GPT."
 },
 
 {
-    id: "TERMOFLEX",
-
-    name: "Termoflex",
-
-    application: [
-        "Construcción"
-    ],
-
-    subApplication: [
-        "Extensiones",
-        "Equipos Portátiles"
-    ],
-
-    voltageClass: "600V",
-
-    temperatureClass: "90°C",
-
-    conductor: "Cobre",
-
-    insulation: "PVC",
-
-    installation: [
-        "Interior",
-        "Exterior"
-    ],
-
-    environment: [
-        "Exterior"
-    ],
-
-    specialFeatures: [
-        "Flexible",
-        "Resistente Aceite",
-        "UV"
-    ],
-
-    brochure:
-    "Brochure Construcción",
-
-    description:
-    "Cable flexible para extensiones y equipos portátiles."
+id:"TERMOFLEX",
+family:"Construcción",
+catalog:"Construcción",
+name:"Termoflex",
+application:["Construcción"],
+subApplication:["Equipos Portátiles","Extensiones"],
+voltageClass:"600V",
+temperatureClass:"90°C",
+conductor:"Cobre",
+insulation:"PVC",
+installation:["Interior","Exterior"],
+environment:["Exterior"],
+specialFeatures:["Flexible","UV"],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/FT%20TERMOFLEX.pdf",
+description:"Cable para extensiones y equipos portátiles."
 },
 
 {
-    id: "EXZHELLENT",
-
-    name: "Exzhellent Green",
-
-    application: [
-        "Construcción"
-    ],
-
-    subApplication: [
-        "Rutas Evacuación",
-        "Hospitales",
-        "Túneles",
-        "Auditorios"
-    ],
-
-    voltageClass: "600V",
-
-    temperatureClass: "75°C",
-
-    conductor: "Cobre",
-
-    insulation: "HFFR-LS",
-
-    installation: [
-        "Tubería",
-        "Canalización",
-        "Bandeja"
-    ],
-
-    environment: [
-        "Hospital",
-        "Túnel",
-        "Alta Concentración Personas"
-    ],
-
-    specialFeatures: [
-        "LSZH",
-        "Biopolímero",
-        "Baja Emisión Humos"
-    ],
-
-    brochure:
-    "Exzhellent Green",
-
-    description:
-    "Cable libre de halógenos para máxima seguridad humana."
+id:"SPT",
+family:"Construcción",
+catalog:"Construcción",
+name:"Cable Gemelo SPT",
+application:["Construcción"],
+subApplication:["Iluminación","Cordones"],
+voltageClass:"300V",
+temperatureClass:"60°C",
+conductor:"Cobre",
+insulation:"PVC",
+installation:["Interior"],
+environment:["Seco"],
+specialFeatures:["Flexible"],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/Cables%20Gemelo.pdf",
+description:"Cable paralelo para iluminación."
 },
 
 {
-    id: "COBRE-DESNUDO",
+id:"EXZHELLENT",
+family:"Construcción",
+catalog:"Construcción",
+name:"Exzhellent Green",
+application:["Construcción"],
+subApplication:["Hospitales","Túneles","Evacuación"],
+voltageClass:"600V",
+temperatureClass:"75°C",
+conductor:"Cobre",
+insulation:"LSZH",
+installation:["Canalización","Bandeja"],
+environment:["Hospital","Alta Concentración Personas"],
+specialFeatures:["LSZH","Baja Emisión Humos"],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/Exzhellent%20Green%20Cobre_0.pdf",
+description:"Cable libre de halógenos."
+},
 
-    name: "Cobre Desnudo",
+{
+id:"XZ1",
+family:"Construcción",
+catalog:"Construcción",
+name:"XZ1(S)",
+application:["Construcción","Distribución"],
+subApplication:["Alimentadores","Distribución"],
+voltageClass:"0.6/1kV",
+temperatureClass:"90°C",
+conductor:"Cobre",
+insulation:"XLPE LSZH",
+installation:["Bandeja","Canalización","Exterior"],
+environment:["Exterior"],
+specialFeatures:["LSZH"],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/XZ1.pdf",
+description:"Cable LSZH para instalaciones críticas."
+},
 
-    application: [
-        "Puesta a Tierra"
-    ],
+/* =====================================================
+   DISTRIBUCIÓN
+===================================================== */
 
-    subApplication: [
-        "Malla Tierra",
-        "Electrodos"
-    ],
+{
+id:"SUPERFLEX",
+family:"Distribución",
+catalog:"Construcción",
+name:"Superflex",
+application:["Distribución"],
+subApplication:["Distribución","Alimentadores"],
+voltageClass:"1000V",
+temperatureClass:"90°C",
+conductor:"Cobre",
+insulation:"PVC",
+installation:["Enterrado","Exterior","Interior"],
+environment:["Húmedo"],
+specialFeatures:["Flexible"],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/LV-SUPERFLEX.pdf",
+description:"Cable flexible para distribución."
+},
 
-    voltageClass: "-",
-
-    temperatureClass: "-",
-
-    conductor: "Cobre",
-
-    insulation: "Sin Aislamiento",
-
-    installation: [
-        "Enterrado"
-    ],
-
-    environment: [
-        "Exterior"
-    ],
-
-    specialFeatures: [],
-
-    brochure:
-    "Brochure Construcción",
-
-    description:
-    "Conductor para sistemas de puesta a tierra."
+{
+id:"N2XY",
+family:"Distribución",
+catalog:"Distribución",
+name:"N2XY",
+application:["Distribución"],
+subApplication:["Distribución BT"],
+voltageClass:"0.6/1kV",
+temperatureClass:"90°C",
+conductor:"Cobre",
+insulation:"XLPE",
+installation:["Enterrado","Bandeja"],
+environment:["Exterior","Húmedo"],
+specialFeatures:["UV"],
+datasheet:"https://ec.prysmian.com/es/fichatecnica",
+description:"Cable XLPE para redes BT."
 },
 
 /* =====================================================
@@ -372,92 +211,75 @@ export const products = [
 ===================================================== */
 
 {
-    id: "VOLTENAX",
-
-    name: "Voltenax",
-
-    application: [
-        "Solar"
-    ],
-
-    subApplication: [
-        "String Solar",
-        "Interconexión Paneles"
-    ],
-
-    voltageClass: "1500VDC",
-
-    temperatureClass: "90°C",
-
-    conductor: "Cobre Estañado",
-
-    insulation: "LSZH",
-
-    installation: [
-        "Exterior",
-        "Bandeja"
-    ],
-
-    environment: [
-        "UV",
-        "Húmedo"
-    ],
-
-    specialFeatures: [
-        "Solar",
-        "UV",
-        "Resistente Humedad"
-    ],
-
-    brochure:
-    "Voltenax",
-
-    description:
-    "Cable fotovoltaico para conexión de módulos solares."
+id:"PV",
+family:"Solar",
+catalog:"Solar",
+name:"Cable PV Fotovoltaico",
+application:["Solar"],
+subApplication:["String Solar"],
+voltageClass:"1500VDC",
+temperatureClass:"90°C",
+conductor:"Cobre Estañado",
+insulation:"XLPO",
+installation:["Exterior"],
+environment:["UV","Húmedo"],
+specialFeatures:["Solar","UV"],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/FT%20CABLE%20PV%20FOTOVOLTAICO%20%281%20CAPA%29.pdf",
+description:"Cable fotovoltaico."
 },
 
 {
-    id: "PRYSUN",
+id:"PRYSOLAR",
+family:"Solar",
+catalog:"Solar",
+name:"Prysolar RTR H1Z2Z2-K",
+application:["Solar"],
+subApplication:["String Solar"],
+voltageClass:"1500VDC",
+temperatureClass:"90°C",
+conductor:"Cobre Estañado",
+insulation:"LSZH",
+installation:["Exterior"],
+environment:["UV"],
+specialFeatures:["Solar"],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/FICHA%20PRYSMIAN%20PRYSOLAR%20RTR%20ES-IN%20Sec%204%20to%2025.pdf",
+description:"Cable premium solar."
+},
 
-    name: "Prysun",
+{
+id:"PRYSUN",
+family:"Solar",
+catalog:"Solar",
+name:"Prysun",
+application:["Solar"],
+subApplication:["Inversor","Transformador"],
+voltageClass:"1kV",
+temperatureClass:"90°C",
+conductor:"Aluminio",
+insulation:"XLPE",
+installation:["Exterior","Enterrado"],
+environment:["Exterior"],
+specialFeatures:["Solar"],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/SO_002_03_ESP_Prysun.pdf",
+description:"Cable BT para plantas fotovoltaicas."
+},
 
-    application: [
-        "Solar"
-    ],
-
-    subApplication: [
-        "Caja Combinadora",
-        "Inversor",
-        "Transformador"
-    ],
-
-    voltageClass: "1kV",
-
-    temperatureClass: "90°C",
-
-    conductor: "Aluminio",
-
-    insulation: "XLPE",
-
-    installation: [
-        "Enterrado",
-        "Exterior"
-    ],
-
-    environment: [
-        "Húmedo",
-        "Exterior"
-    ],
-
-    specialFeatures: [
-        "Solar"
-    ],
-
-    brochure:
-    "Prysun",
-
-    description:
-    "Cable BT Grid para plantas fotovoltaicas."
+{
+id:"VOLTENAX",
+family:"Solar",
+catalog:"Solar",
+name:"Voltenax Ecogrid",
+application:["Solar","Distribución"],
+subApplication:["Distribución Solar"],
+voltageClass:"1kV",
+temperatureClass:"90°C",
+conductor:"Aluminio",
+insulation:"XLPE",
+installation:["Exterior","Enterrado"],
+environment:["UV"],
+specialFeatures:["Solar"],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/FT%20VOLTENAX%20ECOGRID%20%281%29.pdf",
+description:"Distribución BT para plantas solares."
 },
 
 /* =====================================================
@@ -465,173 +287,249 @@ export const products = [
 ===================================================== */
 
 {
-    id: "CAT5E",
-
-    name: "Cat 5e UTP",
-
-    application: [
-        "Telecom"
-    ],
-
-    subApplication: [
-        "LAN",
-        "Ethernet"
-    ],
-
-    voltageClass: "Datos",
-
-    temperatureClass: "-",
-
-    conductor: "Cobre",
-
-    insulation: "PE",
-
-    installation: [
-        "Interior"
-    ],
-
-    environment: [
-        "Seco"
-    ],
-
-    specialFeatures: [
-        "PoE"
-    ],
-
-    brochure:
-    "Soluciones Digitales",
-
-    description:
-    "Cableado estructurado categoría 5e."
+id:"CAT5E",
+family:"Telecom",
+catalog:"Soluciones Digitales",
+name:"Cable Cat 5e",
+application:["Telecom"],
+subApplication:["LAN","Ethernet"],
+voltageClass:"Datos",
+temperatureClass:"-",
+conductor:"Cobre",
+insulation:"PE",
+installation:["Interior"],
+environment:["Seco"],
+specialFeatures:["PoE"],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/Cable%20Lan%20UTP%205E_0.pdf",
+description:"Cable estructurado Cat5e."
 },
 
 {
-    id: "CAT6",
-
-    name: "Cat 6 UTP",
-
-    application: [
-        "Telecom"
-    ],
-
-    subApplication: [
-        "LAN",
-        "Ethernet",
-        "PoE"
-    ],
-
-    voltageClass: "Datos",
-
-    temperatureClass: "-",
-
-    conductor: "Cobre",
-
-    insulation: "PE",
-
-    installation: [
-        "Interior"
-    ],
-
-    environment: [
-        "Seco"
-    ],
-
-    specialFeatures: [
-        "PoE"
-    ],
-
-    brochure:
-    "Soluciones Digitales",
-
-    description:
-    "Redes hasta 1 Gbps."
+id:"CAT6",
+family:"Telecom",
+catalog:"Soluciones Digitales",
+name:"Cable Cat 6",
+application:["Telecom"],
+subApplication:["LAN","Ethernet","PoE"],
+voltageClass:"Datos",
+temperatureClass:"-",
+conductor:"Cobre",
+insulation:"PE",
+installation:["Interior"],
+environment:["Seco"],
+specialFeatures:["PoE"],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/Cable%20Lan%20UTP%206_0.pdf",
+description:"Cable Gigabit Cat 6."
 },
 
 {
-    id: "CAT6A",
-
-    name: "Cat 6A F/UTP",
-
-    application: [
-        "Telecom"
-    ],
-
-    subApplication: [
-        "LAN",
-        "Backbone",
-        "PoE+"
-    ],
-
-    voltageClass: "Datos",
-
-    temperatureClass: "-",
-
-    conductor: "Cobre",
-
-    insulation: "PE",
-
-    installation: [
-        "Interior"
-    ],
-
-    environment: [
-        "Seco"
-    ],
-
-    specialFeatures: [
-        "PoE"
-    ],
-
-    brochure:
-    "Soluciones Digitales",
-
-    description:
-    "Redes de alto desempeño y PoE+."
+id:"CAT6A",
+family:"Telecom",
+catalog:"Soluciones Digitales",
+name:"Cable Cat 6A",
+application:["Telecom"],
+subApplication:["LAN","Backbone","PoE+"],
+voltageClass:"Datos",
+temperatureClass:"-",
+conductor:"Cobre",
+insulation:"PE",
+installation:["Interior"],
+environment:["Seco"],
+specialFeatures:["PoE+"],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/Cable%20Lan%20UTP%206A_0.pdf",
+description:"Cable Cat 6A de alto desempeño."
 },
 
 /* =====================================================
-   BOMBEO
+   FIBRA ÓPTICA
 ===================================================== */
 
 {
-    id: "SUMERGIBLE-TML",
+id:"ADSS120",
+family:"Fibra Óptica",
+catalog:"Fibra",
+name:"ADSS Single Jacket 120m",
+application:["Fibra Óptica"],
+subApplication:["Aéreo ADSS"],
+voltageClass:"Fibra",
+temperatureClass:"-",
+conductor:"Fibra Óptica",
+insulation:"PE",
+installation:["Exterior","Aéreo"],
+environment:["UV"],
+specialFeatures:["ADSS"],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/TD%2024-428%2012F%2024F%2048F%20ADSS%20Single%20Jacket%20Span%20120m_0.pdf",
+description:"Cable ADSS span 120m."
+},
 
-    name: "Cable Sumergible TML Type B Round",
+{
+id:"ADSS200",
+family:"Fibra Óptica",
+catalog:"Fibra",
+name:"ADSS Single Jacket 200m",
+application:["Fibra Óptica"],
+subApplication:["Aéreo ADSS"],
+voltageClass:"Fibra",
+temperatureClass:"-",
+conductor:"Fibra Óptica",
+insulation:"PE",
+installation:["Exterior","Aéreo"],
+environment:["UV"],
+specialFeatures:["ADSS"],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/02%20FT_TD%2024-428%2012F%2024F%2048F%2096F%20ADSS%20Single%20Jacket%20Span%20200m.pdf",
+description:"Cable ADSS span 200m."
+},
 
-    application: [
-        "Bombeo"
-    ],
+{
+id:"ASU",
+family:"Fibra Óptica",
+catalog:"Fibra",
+name:"ASU 120m",
+application:["Fibra Óptica"],
+subApplication:["Aéreo"],
+voltageClass:"Fibra",
+temperatureClass:"-",
+conductor:"Fibra Óptica",
+insulation:"PE",
+installation:["Exterior","Aéreo"],
+environment:["UV"],
+specialFeatures:["ASU"],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/05%20FT_TD%2024-428%2012H%2024H%20ASU%20Span%20120.pdf",
+description:"Cable ASU."
+},
 
-    subApplication: [
-        "Pozo Profundo",
-        "Bomba Sumergible"
-    ],
+{
+id:"UTRLSZH",
+family:"Fibra Óptica",
+catalog:"Fibra",
+name:"UTR LSZH",
+application:["Fibra Óptica"],
+subApplication:["Interior"],
+voltageClass:"Fibra",
+temperatureClass:"-",
+conductor:"Fibra Óptica",
+insulation:"LSZH",
+installation:["Interior"],
+environment:["Seco"],
+specialFeatures:["LSZH"],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/06%20FT_IFT22511%20-%20CFOT%20UTR%20COG-LSZH%20ES.pdf",
+description:"Fibra óptica LSZH."
+},
 
-    voltageClass: "600V",
+{
+id:"G652D",
+family:"Fibra Óptica",
+catalog:"Fibra",
+name:"Fibra G652D",
+application:["Fibra Óptica"],
+subApplication:["Backbone"],
+voltageClass:"Fibra",
+temperatureClass:"-",
+conductor:"Fibra Óptica",
+insulation:"-",
+installation:["Exterior","Interior"],
+environment:["Seco"],
+specialFeatures:["Monomodo"],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/07%20FT_G652D.pdf",
+description:"Fibra monomodo G652D."
+},
 
-    temperatureClass: "90°C",
+/* =====================================================
+   SUMERGIBLE
+===================================================== */
 
-    conductor: "Cobre",
+{
+id:"HIDROFIRM",
+family:"Sumergible",
+catalog:"Sumergible",
+name:"Hidrofirm",
+application:["Sumergible"],
+subApplication:["Pozo Profundo","Bomba Sumergible"],
+voltageClass:"600V",
+temperatureClass:"75°C",
+conductor:"Cobre",
+insulation:"PVC",
+installation:["Sumergido"],
+environment:["Húmedo"],
+specialFeatures:["Resistente Agua"],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/HIDROFIRM.pdf",
+description:"Cable para bombas sumergibles."
+},
 
-    insulation: "PVC",
+{
+id:"OZONEFLEX",
+family:"Sumergible",
+catalog:"Sumergible",
+name:"Ozone Flex Plus",
+application:["Sumergible"],
+subApplication:["Pozo Profundo"],
+voltageClass:"600V",
+temperatureClass:"90°C",
+conductor:"Cobre",
+insulation:"EPR",
+installation:["Sumergido"],
+environment:["Húmedo"],
+specialFeatures:["Resistente Agua"],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/OZONEFLEX%20PLUS.pdf",
+description:"Cable para ambientes severos."
+},
 
-    installation: [
-        "Sumergido"
-    ],
+{
+id:"TML",
+family:"Sumergible",
+catalog:"Sumergible",
+name:"Cable TML",
+application:["Sumergible"],
+subApplication:["Bomba Sumergible"],
+voltageClass:"600V",
+temperatureClass:"90°C",
+conductor:"Cobre",
+insulation:"PVC",
+installation:["Sumergido"],
+environment:["Húmedo"],
+specialFeatures:["Resistente Agua"],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/TML.pdf",
+description:"Cable para bombas sumergibles."
+},
 
-    environment: [
-        "Húmedo"
-    ],
+/* =====================================================
+   PUESTA A TIERRA
+===================================================== */
 
-    specialFeatures: [
-        "Resistente Agua"
-    ],
+{
+id:"COBREDESNUDO",
+family:"Puesta a Tierra",
+catalog:"Construcción",
+name:"Cable Desnudo de Cobre",
+application:["Puesta a Tierra"],
+subApplication:["Malla Tierra"],
+voltageClass:"-",
+temperatureClass:"-",
+conductor:"Cobre",
+insulation:"Sin Aislamiento",
+installation:["Enterrado"],
+environment:["Exterior"],
+specialFeatures:[],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/FT%20CABLES%20Cu%20DESNUDOS%20EC_0.pdf",
+description:"Conductor para sistemas de puesta a tierra."
+},
 
-    brochure:
-    "Cables Sumergibles",
-
-    description:
-    "Cable para bombas sumergibles y pozos profundos."
+{
+id:"ALAMBREDESNUDO",
+family:"Puesta a Tierra",
+catalog:"Construcción",
+name:"Alambre Cobre Desnudo",
+application:["Puesta a Tierra"],
+subApplication:["Malla Tierra","Electrodos"],
+voltageClass:"-",
+temperatureClass:"-",
+conductor:"Cobre",
+insulation:"Sin Aislamiento",
+installation:["Enterrado"],
+environment:["Exterior"],
+specialFeatures:[],
+datasheet:"https://ec.prysmian.com/sites/ec.prysmian.com/files/media/documents/RETIE%20-%20DESNUDOS%20-%20Alambre%20Cobre%20desnudo%20blando%20y%20duro%20-%20Cert.%20N%C2%B0%20CP25_AA00373.pdf",
+description:"Alambre de cobre desnudo blando y duro."
 }
 
 ];
