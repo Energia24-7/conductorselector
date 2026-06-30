@@ -1,86 +1,63 @@
 import { products }
 from '../data/products.js';
 
+
 export const selected = {
 
-    application:"",
-    subApplication:"",
-    voltage:"",
-    installation:"",
-    environment:""
+    application: "",
+    subApplication: "",
+    voltage: "",
+    installation: "",
+    environment: ""
 
 };
 
-export function getFilteredProducts(){
 
-    console.log(
-        "Seleccion actual:",
-        selected
-    );
+/* =====================================
+   FILTRADO PRINCIPAL
+===================================== */
 
-    return products.filter(product=>{
+export function getFilteredProducts() {
 
-        const application =
-            Array.isArray(product.application)
-                ? product.application
-                : [];
+    return products.filter(product => {
 
-        const subApplication =
-            Array.isArray(product.subApplication)
-                ? product.subApplication
-                : [];
-
-        const installation =
-            Array.isArray(product.installation)
-                ? product.installation
-                : [];
-
-        const environment =
-            Array.isArray(product.environment)
-                ? product.environment
-                : [];
-
-        if(
+        if (
             selected.application &&
-            !application.includes(
-                selected.application
-            )
-        ){
+            !(product.application || [])
+                .includes(selected.application)
+        ) {
             return false;
         }
 
-        if(
+        if (
             selected.subApplication &&
-            !subApplication.includes(
-                selected.subApplication
-            )
-        ){
+            !(product.subApplication || [])
+                .includes(selected.subApplication)
+        ) {
             return false;
         }
 
-        if(
+        if (
             selected.voltage &&
             product.voltageClass !==
             selected.voltage
-        ){
+        ) {
             return false;
         }
 
-        if(
+        if (
             selected.installation &&
-            !installation.includes(
-                selected.installation
-            )
-        ){
+            !(product.installation || [])
+                .includes(selected.installation)
+        ) {
             return false;
         }
 
-        if(
+        if (
             selected.environment &&
-            !environment.includes(
-                selected.environment
-            )
-        ){
+            !(product.environment || [])
+                .includes(selected.environment)
+        ) {
             return false;
         }
 
@@ -90,53 +67,88 @@ export function getFilteredProducts(){
 
 }
 
-export function getOptions(field){
 
-    const productsFiltered =
+/* =====================================
+   OPCIONES DINÁMICAS
+===================================== */
+
+export function getOptions(field) {
+
+    const filtered =
         getFilteredProducts();
 
     const values =
         new Set();
 
-    productsFiltered.forEach(p=>{
+    filtered.forEach(product => {
 
-        if(field === "subApplication"){
+        switch (field) {
 
-            (p.subApplication || [])
-                .forEach(v=>values.add(v));
+            case "subApplication":
 
-        }
+                (product.subApplication || [])
+                    .forEach(value =>
+                        values.add(value)
+                    );
 
-        if(field === "voltage"){
+                break;
 
-            if(p.voltageClass){
+            case "voltage":
 
-                values.add(
-                    p.voltageClass
-                );
+                if (
+                    product.voltageClass
+                ) {
 
-            }
+                    values.add(
+                        product.voltageClass
+                    );
 
-        }
+                }
 
-        if(field === "installation"){
+                break;
 
-            (p.installation || [])
-                .forEach(v=>values.add(v));
+            case "installation":
 
-        }
+                (product.installation || [])
+                    .forEach(value =>
+                        values.add(value)
+                    );
 
-        if(field === "environment"){
+                break;
 
-            (p.environment || [])
-                .forEach(v=>values.add(v));
+            case "environment":
+
+                (product.environment || [])
+                    .forEach(value =>
+                        values.add(value)
+                    );
+
+                break;
 
         }
 
     });
 
     return [...values]
-        .filter(Boolean)
         .sort();
+
+}
+
+
+/* =====================================
+   RESET
+===================================== */
+
+export function resetSelection() {
+
+    selected.application = "";
+
+    selected.subApplication = "";
+
+    selected.voltage = "";
+
+    selected.installation = "";
+
+    selected.environment = "";
 
 }
