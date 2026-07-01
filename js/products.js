@@ -711,13 +711,10 @@ export const products = [
 
 {
     id:"G652D",
-    family:"Telecom",
+    family:"Fibra Óptica",
     catalog:"Fibra Óptica",
     name:"Fibra Óptica Monomodo G652D",
-    application:[
-        "Telecom",
-        "Fibra Óptica"
-    ],
+    application:["Fibra Óptica"],
     subApplication:[
         "Backbone",
         "FTTH",
